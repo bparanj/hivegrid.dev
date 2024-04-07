@@ -68,3 +68,30 @@ terraform.rc
 terraform.rc
 # Cache objects
 packer_cache/
+# Ansible sensitive information and credentials
+ansible/*.vault
+ansible/*.vault.yml
+ansible/vault_password.txt
+
+# Temporary and system-specific files
+ansible/*.retry
+ansible/__pycache__/
+ansible/*.pyc
+ansible/*.pyo
+
+# Role dependencies managed by ansible-galaxy
+ansible/roles/*
+!ansible/roles/.keep
+
+# Auto-generated files by ansible-pull
+ansible/local.yml
+
+# Python virtual environment
+ansible/venv/
+ansible/.env/
+
+# Editor-specific directories
+.vscode/
+.idea/
+
+
