@@ -21,7 +21,7 @@ The Terraform template uses the custom AMI created by Packer to provision an EC2
 - AWS account
 - IAM role with proper policy for EC2, S3 and AWS secrets manager
 
-The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance.
+The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance. The only reason it is stored in the secrets manager is that once you download the PEM file, you will not be able to access it again. If you don't want to pay for the AWS secrets, after you download the file, you can delete it from your AWS console.
 
 ## Ansible Playbooks
 
