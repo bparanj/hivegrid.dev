@@ -49,7 +49,7 @@ curl http://localhost:8080/healthz | jq .
 
 ## Toolchain
 
-To learn why are these tools picked for the provisioning of the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
+To learn why these tools are selected for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
 ## Customization
 
