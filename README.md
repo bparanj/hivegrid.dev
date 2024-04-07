@@ -2,11 +2,7 @@
 
 ## Packer Image
 
-The Packer prebuilt image provides:
-
-- Postgresql
-- Redis
-- Caddy
+The Packer prebuilt image provides Postgresql, Redis, Caddy and more. See [versions](./VERSIONS.md) for more details.
 
 ## Terraform Provisioning
 
