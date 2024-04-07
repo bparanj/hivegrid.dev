@@ -12,8 +12,8 @@ The Packer prebuilt image provides:
 
 The Terraform template uses the custom AMI created by Packer to provision an EC2 instance with the following configuration:
 
-- Instance Type
-- Region
+- Instance Type: c5.4xlarge
+- Region: us-west-2
 - etc
 
 ### Prerequisites
@@ -27,7 +27,17 @@ AWS S3 is used for database backups.
 
 ## Ansible Playbooks
 
-Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image.
+Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image. The playbooks provide:
+
+- Install required packages on Ubuntu 22.04
+- Install and configure Fail2ban
+- Setup deploy user
+- Harden SSH Configuration
+- Install and Configure Caddy Server
+- Install Ruby 3.3.0
+- Install PostgreSQL 16
+- Install and Setup Redis
+- Set server timezone to UTC
 
 ## Deployment
 
@@ -35,8 +45,23 @@ You can use Capistrano to deploy your Rails 7.1 app to the provisioned server
 
 ## Testing
 
-The image is tested using Goss.
+The image is tested using Goss. 
+
+```bash
+curl http://localhost:8080/healthz | jq .
+```
+
+## Toolchain
+
+To learn why are these tools picked for the provisioning of the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
 ## Customization
 
 If the image created by Packer does not meet your needs, you can customize the Packer template to change the versions for Ruby, Postgresql, Redis etc.
+
+## Tasks
+
+- [Preflight Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/README.md)
+- [Provision Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/PROVISION.md)
+- [AWS CLI on Mac](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/10.md)
+- [Troubleshooting Guide](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/toc.md)
