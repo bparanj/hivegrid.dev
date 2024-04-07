@@ -102,3 +102,7 @@ PostgreSQL 16.2 (Ubuntu 16.2-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by 
 ```
 redis-server --version
 ```
+
+```
+7.2.4
+```
