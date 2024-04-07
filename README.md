@@ -23,6 +23,10 @@ The Terraform template uses the custom AMI created by Packer to provision an EC2
 
 The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance.
 
+## Ansible Playbooks
+
+Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image.
+
 ## Deployment
 
 You can use Capistrano to deploy your Rails 7.1 app to the provisioned server
