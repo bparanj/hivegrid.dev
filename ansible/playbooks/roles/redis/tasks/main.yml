@@ -1,0 +1,124 @@
+- name: Install build dependencies for Redis
+  ansible.builtin.package:
+    name:
+      - build-essential
+      - tcl
+    state: present
+  become: true
+
+- name: Ensure root's ansible tmp directory exists with correct permissions
+  file:
+    path: /root/.ansible/tmp
+    state: directory
+    owner: root
+    group: root
+    mode: "0700"
+  become: true
+
+- name: Download Redis source code
+  ansible.builtin.get_url:
+    url: "http://download.redis.io/releases/redis-7.2.4.tar.gz"
+    dest: "/tmp/redis-7.2.4.tar.gz"
+    mode: "0644"
+
+- name: Extract Redis source code
+  ansible.builtin.unarchive:
+    src: "/tmp/redis-7.2.4.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+
+- name: Compile Redis
+  ansible.builtin.shell:
+    cmd: make
+    chdir: "/tmp/redis-7.2.4"
+
+- name: Install Redis
+  ansible.builtin.shell:
+    cmd: make install
+    chdir: "/tmp/redis-7.2.4"
+  become: true
+
+- name: Ensure Redis configuration directory exists
+  ansible.builtin.file:
+    path: /etc/redis
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Move Redis configuration file to standard location
+  ansible.builtin.command:
+    cmd: cp /tmp/redis-7.2.4/redis.conf /etc/redis/redis.conf
+  args:
+    creates: /etc/redis/redis.conf
+  become: true
+
+- name: Update Redis configuration file
+  ansible.builtin.lineinfile:
+    path: "/etc/redis/redis.conf"
+    regexp: "^{{ item.option }}"
+    line: "{{ item.option }} {{ item.value }}"
+    state: present
+  loop:
+    - { option: "bind", value: "127.0.0.1" }
+    - { option: "maxmemory-policy", value: "allkeys-lru" }
+  become: true
+  notify: restart redis
+
+- name: Ensure Redis user exists
+  ansible.builtin.user:
+    name: redis
+    system: yes
+    shell: /sbin/nologin
+  become: true
+
+- name: Ensure Redis group exists
+  ansible.builtin.group:
+    name: redis
+    system: yes
+  become: true
+
+- name: Create Redis systemd service file
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/redis.service
+    content: |
+      [Unit]
+      Description=Redis In-Memory Data Store
+      After=network.target
+
+      [Service]
+      User=redis
+      Group=redis
+      ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
+      ExecStop=/usr/local/bin/redis-cli shutdown
+      Restart=always
+
+      [Install]
+      WantedBy=multi-user.target
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: restart redis
+
+- name: Reload systemd to apply new service file and restart Redis service
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    name: redis
+    state: restarted
+    enabled: yes
+  become: true
+
+- name: Ensure Redis service is enabled and started
+  ansible.builtin.service:
+    name: redis
+    enabled: yes
+    state: started
+  become: true
+
+- name: Disable specific Redis commands
+  ansible.builtin.lineinfile:
+    path: "/etc/redis/redis.conf"
+    line: "rename-command {{ item }} ''"
+    state: present
+  loop: "{{ redis_disabled_commands }}"
+  become: true

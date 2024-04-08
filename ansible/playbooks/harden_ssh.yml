@@ -1,0 +1,45 @@
+---
+- name: Harden SSH Configuration for Base Image
+  hosts: all
+  become: true
+  vars:
+    ssh_port: 2222 # New SSH port (change as needed)
+
+  tasks:
+    - name: Create Ansible temporary directory
+      file:
+        path: /root/.ansible/tmp
+        state: directory
+        mode: '0775'
+        owner: root
+        group: root
+
+    - name: Prevent root login via SSH
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^(#)?PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+      notify: Restart SSH service to apply changes
+
+    - name: Disable password authentication
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^(#)?PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        state: present
+      notify: Restart SSH service to apply changes
+
+    - name: Change default SSH port
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?Port'
+        line: 'Port {{ ssh_port }}'
+        state: present
+      notify: Restart SSH service to apply changes
+
+  handlers:
+    - name: Restart SSH service to apply changes
+      ansible.builtin.service:
+        name: ssh
+        state: restarted

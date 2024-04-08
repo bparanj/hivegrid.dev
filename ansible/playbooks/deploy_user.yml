@@ -1,0 +1,25 @@
+---
+- name: Create deploy user and add to sudo group
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure deploy user is present
+      ansible.builtin.user:
+        name: deploy
+        state: present
+        groups: sudo
+        append: yes
+        create_home: yes
+        shell: /bin/bash
+
+    - name: Ensure deploy user has passwordless sudo
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/deploy
+        line: "deploy ALL=(ALL) NOPASSWD:ALL"
+        create: yes
+        validate: "visudo -cf %s"
+
+    - name: Set file permissions for the sudoers file for deploy
+      ansible.builtin.file:
+        path: /etc/sudoers.d/deploy
+        mode: "0440"

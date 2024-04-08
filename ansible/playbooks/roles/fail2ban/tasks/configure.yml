@@ -1,0 +1,20 @@
+- name: Check if default Fail2Ban configuration exists
+  ansible.builtin.stat:
+    path: /etc/fail2ban/jail.conf
+  register: jail_conf_stat
+
+- name: Copy default Fail2ban configuration (for backup)
+  ansible.builtin.copy:
+    src: /etc/fail2ban/jail.conf
+    dest: /etc/fail2ban/jail.conf.backup
+    remote_src: yes
+  when: jail_conf_stat.stat.exists
+
+- name: Copy Fail2Ban configuration file
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/jail.local"
+    dest: /etc/fail2ban/jail.local
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart fail2ban

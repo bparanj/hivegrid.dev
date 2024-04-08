@@ -12,7 +12,7 @@
 | npm       | 10.5.0      |
 | AMI       | 0.1.0       |
 
-The AMI image version in main.tf and aws-ubuntu.pkr.hcl must be same.
+The AMI image version in main.tf and aws-ubuntu.pkr.hcl must be same. We use the latest custom AMI image with the Terraform.
 
 #### Python
 

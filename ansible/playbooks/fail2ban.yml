@@ -1,0 +1,7 @@
+---
+- name: Install and configure Fail2ban
+  hosts: all # Replace 'all' with your specific host group
+  become: true # Required for package installation and service management (root privileges)
+
+  roles:
+    - fail2ban

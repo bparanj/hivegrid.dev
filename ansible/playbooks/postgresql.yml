@@ -1,0 +1,98 @@
+- name: Install PostgreSQL 16 on Ubuntu 22.04
+  hosts: all
+  become: true # Use sudo
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+    - name: Install prerequisites
+      ansible.builtin.apt:
+        name:
+          - ca-certificates
+          - wget
+        state: present
+        update_cache: yes
+
+    - name: Add the PostgreSQL GPG key
+      ansible.builtin.apt_key:
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        state: present
+
+    - name: Add PostgreSQL 16 repository
+      ansible.builtin.apt_repository:
+        repo: deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main
+        state: present
+        update_cache: yes
+
+    - name: Install PostgreSQL 16
+      ansible.builtin.apt:
+        name:
+          - postgresql-16
+          - postgresql-client-16
+        state: present
+
+    - name: Ensure Ansible temporary directory exists for PostgreSQL user
+      file:
+        path: /var/lib/postgresql/.ansible/tmp
+        state: directory
+        mode: "0775" # or '0755' if you want to be more restrictive
+        owner: postgres
+        group: postgres
+      become: true
+
+    - name: Ensure PostgreSQL is running and enabled on boot
+      ansible.builtin.service:
+        name: postgresql
+        state: started
+        enabled: yes
+
+    - name: Configure PostgreSQL to listen on localhost only
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/16/main/postgresql.conf
+        regexp: '^#?listen_addresses\s*='
+        line: "listen_addresses = 'localhost'"
+        state: present
+      notify: restart postgresql
+
+    - name: Restrict connections to local machine
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/16/main/pg_hba.conf
+        regexp: '^local\s+all\s+all\s+peer$'
+        line: "local   all             all                                     peer"
+        state: present
+      notify: restart postgresql
+
+    - name: Ensure libpq-dev is installed (Ubuntu/Debian)
+      ansible.builtin.apt:
+        name: libpq-dev
+        state: present
+
+    - name: Install psycopg2-binary using pip3 # Required for postgresql modules
+      ansible.builtin.pip:
+        name: psycopg2-binary
+        state: present
+
+    - name: Create database user with a password and grant CREATE DB privilege
+      ansible.builtin.postgresql_user:
+        login_user: postgres
+        name: deploy
+        password: "password"
+        state: present
+        role_attr_flags: CREATEDB
+      become: true
+      become_user: postgres
+
+    - name: Add deploy user md5 auth to pg_hba.conf
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/16/main/pg_hba.conf
+        line: "local   all             deploy                                  md5"
+        state: present
+      become: true
+      notify: restart postgresql
+
+  handlers:
+    - name: restart postgresql
+      ansible.builtin.service:
+        name: postgresql
+        state: restarted
+        enabled: yes

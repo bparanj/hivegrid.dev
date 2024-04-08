@@ -1,0 +1,26 @@
+[DEFAULT]
+# "ignoreip" can be an IP address, a CIDR mask, or a DNS host. Here, localhost is excluded.
+# Add your trusted IPs
+ignoreip = 127.0.0.1/8 ::1
+
+# "bantime" is the duration of time a host is banned.
+bantime = 86400  # Ban for 1 day 
+
+# "findtime" is the duration of time that a host is monitored for repeated failures.
+findtime = 10m
+
+# "maxretry" is the number of failures that triggers a ban action against the host.
+maxretry = 3
+
+# Email for sending ban notifications.
+destemail = your-email@your-domain.com
+
+# Action to take when banning an IP. See action.d/ directory for other options.
+action = %(action_mwl)s
+
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 3

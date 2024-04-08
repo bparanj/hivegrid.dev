@@ -1,0 +1,23 @@
+---
+- name: Configure MOTD
+  hosts: all
+  become: true
+  vars:
+    motd_message: |
+      +---------------------------------------------------------------------------------+
+      |                                                                                 |
+      |    This server is managed by HiveGrid. Do not manually configure or install     |
+      |    anything on this server.                                                     |
+      |    You can view the log files and inspect process status or anything that does  |
+      |    not modify this server.                                                      |
+      |                                                                                 |
+      +---------------------------------------------------------------------------------+
+
+  tasks:
+    - name: Set MOTD message
+      ansible.builtin.copy:
+        dest: /etc/motd
+        content: "{{ motd_message }}"
+        owner: root
+        group: root
+        mode: '0644'

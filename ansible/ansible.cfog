@@ -1,0 +1,3 @@
+[ssh_connection]
+scp_if_ssh = False  # Use this to disable scp explicitly, though it's not directly choosing sftp
+pipelining = True   # This can improve performance but has specific requirements

@@ -1,0 +1,4 @@
+- name: Install Fail2Ban
+  ansible.builtin.apt:
+    name: fail2ban
+    state: present

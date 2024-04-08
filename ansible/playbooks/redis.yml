@@ -1,0 +1,7 @@
+- name: Setup Redis on Ubuntu 22.04
+  hosts: all
+  become: true
+  roles:
+    - redis
+  environment:
+    ANSIBLE_REMOTE_TMP: "/home/{{ ansible_user }}/ansible_tmp"

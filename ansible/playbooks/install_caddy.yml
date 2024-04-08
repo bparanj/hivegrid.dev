@@ -1,0 +1,39 @@
+---
+- name: Install and Configure Caddy Server
+  hosts: all
+  become: true
+  tasks:
+    - name: Import Caddy's official signing key
+      ansible.builtin.apt_key:
+        url: https://dl.cloudsmith.io/public/caddy/stable/gpg.key
+        state: present
+
+    - name: Add Caddy's official repository
+      ansible.builtin.apt_repository:
+        repo: deb [trusted=yes] https://apt.fury.io/caddy/ /
+        state: present
+        update_cache: yes
+
+    - name: Install Caddy
+      ansible.builtin.apt:
+        name: caddy
+        state: latest
+
+    - name: Create Caddyfile for reverse proxy
+      ansible.builtin.copy:
+        dest: /etc/caddy/Caddyfile
+        content: |
+          :80 {
+             respond "Hello Caddy" 200
+          }
+        owner: root
+        group: root
+        mode: "0644"
+      notify: restart caddy
+
+  handlers:
+    - name: restart caddy
+      ansible.builtin.systemd:
+        name: caddy
+        state: restarted
+        enabled: yes

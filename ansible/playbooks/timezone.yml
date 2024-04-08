@@ -1,0 +1,8 @@
+---
+- name: Set server timezone to UTC
+  hosts: all
+  become: true
+  tasks:
+    - name: Set timezone to UTC
+      ansible.builtin.timezone:
+        name: UTC

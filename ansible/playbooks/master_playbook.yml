@@ -1,0 +1,13 @@
+---
+- import_playbook: packages.yml
+- import_playbook: redis.yml
+- import_playbook: fail2ban.yml
+- import_playbook: deploy_user.yml
+- import_playbook: install_ruby.yml
+- import_playbook: rack_app.yml
+- import_playbook: postgresql.yml
+- import_playbook: motd.yml
+- import_playbook: install_caddy.yml
+- import_playbook: timezone.yml
+- import_playbook: harden_ssh.yml
+- import_playbook: setup_goss.yml

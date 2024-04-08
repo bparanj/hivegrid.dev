@@ -1,0 +1,84 @@
+---
+- name: Install and Verify with Goss
+  hosts: all
+  become: true
+
+  vars:
+    goss_version: "v0.4.4"
+    goss_install_path: "/usr/local/bin/goss"
+    goss_test_directory: "/etc/goss"
+    goss_listen_addr: ":8080"
+    goss_systemd_service_name: "goss"
+    goss_file: "goss.yaml"
+
+  tasks:
+    - name: Install Goss
+      get_url:
+        url: "https://github.com/aelsabbahy/goss/releases/download/{{ goss_version }}/goss-linux-amd64"
+        dest: "{{ goss_install_path }}"
+        mode: "0755"
+
+    - name: Ensure Goss test directory exists
+      ansible.builtin.file:
+        path: "{{ goss_test_directory }}"
+        state: directory
+
+    - name: Copy Goss test file to target
+      ansible.builtin.copy:
+        src: "../../tests/{{ goss_file }}"
+        dest: "{{ goss_test_directory }}/{{ goss_file }}"
+
+    - name: Create Goss systemd service file
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Goss server
+
+          [Service]
+          ExecStart={{ goss_install_path }} serve --format json --listen-addr {{ goss_listen_addr }}
+          WorkingDirectory={{ goss_test_directory }}
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: "/etc/systemd/system/{{ goss_systemd_service_name }}.service"
+        owner: root
+        group: root
+        mode: "0644"
+      notify:
+        - Reload systemd
+        - Restart Goss
+
+  handlers:
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+    - name: Restart Goss
+      ansible.builtin.systemd:
+        name: "{{ goss_systemd_service_name }}"
+        state: restarted
+        enabled: yes
+
+    - name: Run Goss validation
+      command: "{{ goss_install_path }} validate --format documentation -g {{ goss_test_directory }}/{{ goss_file }}"
+      args:
+        chdir: "{{ goss_test_directory }}"
+      register: test_result
+
+    - name: List contents of Goss test directory
+      command: ls -lah "{{ goss_test_directory }}"
+      register: ls_output
+
+    - name: Show contents of Goss test directory
+      ansible.builtin.debug:
+        var: ls_output.stdout_lines
+
+    - name: Show Goss validation results
+      ansible.builtin.debug:
+        var: test_result.stdout_lines
+
+    - name: Show Goss validation errors
+      ansible.builtin.debug:
+        var: test_result.stderr_lines
+      when: test_result.rc != 0

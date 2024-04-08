@@ -1,0 +1,74 @@
+---
+- name: Install required packages on Ubuntu 22.04
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt repository
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+        autoremove: yes
+        autoclean: yes
+        cache_valid_time: 3600 # Cache valid for 1 hour to avoid unnecessary updates
+
+    - name: Install development tools and libraries
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - build-essential
+        - curl
+        - git-core
+        - jq
+        - libdb-dev
+        - libffi-dev
+        - libgdbm-dev
+        - libgdbm6
+        - libgmp-dev
+        - libncurses5-dev
+        - libreadline-dev
+        - libssl-dev
+        - libyaml-dev
+        - locales
+        - patch
+        - pkg-config
+        - rustc
+        - uuid-dev
+        - zlib1g-dev
+        - tzdata
+        - openssl
+        - python3
+        - openssh-client
+        - net-tools
+      register: result
+      until: result is succeeded
+      retries: 5
+      delay: 10
+      ignore_errors: true
+
+    # Assuming you want to debug the sources.list (maybe for troubleshooting),
+    # it should be its own task and does not need to loop.
+    - name: Debug sources.list
+      ansible.builtin.shell:
+        cmd: cat /etc/apt/sources.list
+      register: sources_list
+
+    - name: Print sources.list content
+      ansible.builtin.debug:
+        msg: "{{ sources_list.stdout }}"
+
+    # This task is outside of the loop and executes based on a condition.
+    - name: Ensure the locale is set to en_US.UTF-8
+      ansible.builtin.locale_gen:
+        name: en_US.UTF-8
+        state: present
+
+    - name: Update locale
+      ansible.builtin.command: update-locale LANG=en_US.UTF-8
+      when: ansible_facts['env']['LANG'] is not defined or ansible_facts['env']['LANG'] != 'en_US.UTF-8'
+      changed_when: false
+
+    - name: Install pip3 for Python3
+      ansible.builtin.apt:
+        name: python3-pip
+        state: present

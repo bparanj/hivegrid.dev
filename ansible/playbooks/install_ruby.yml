@@ -1,0 +1,68 @@
+---
+- name: Install Ruby using ruby-install from source
+  hosts: all
+  become: true
+  tasks:
+    - name: Install dependencies for ruby-install # This is a list of self contained packages that are required to build Ruby from source
+      ansible.builtin.package:
+        name:
+          - git
+          - build-essential
+          - libssl-dev
+          - libyaml-dev
+          - libreadline6-dev
+          - zlib1g-dev
+          - libncurses5-dev
+          - libffi-dev
+          - libgdbm6
+          - libgdbm-dev
+          - libdb-dev
+        state: present
+        update_cache: yes
+
+    - name: Clone ruby-install from GitHub
+      ansible.builtin.git:
+        repo: "https://github.com/postmodern/ruby-install.git"
+        dest: "/usr/local/src/ruby-install"
+        version: "master" # You can specify a tag or commit hash here if needed
+
+    - name: Install ruby-install
+      ansible.builtin.shell:
+        cmd: "make install"
+        chdir: "/usr/local/src/ruby-install"
+
+    - name: Install the latest Ruby version using ruby-install
+      ansible.builtin.command:
+        cmd: "ruby-install --system ruby"
+
+    - name: Set global environment variables for Ruby
+      ansible.builtin.lineinfile:
+        path: /etc/profile.d/ruby.sh
+        create: true
+        line: 'export PATH="$PATH:/opt/rubies/ruby-{{ ruby_version }}/bin"'
+      vars:
+        ruby_version: latest # This needs to be updated manually or determined dynamically
+
+    - name: Verify Ruby installation
+      ansible.builtin.shell:
+        cmd: |
+          source /etc/profile && ruby -v
+      args:
+        executable: /bin/bash
+      register: ruby_version_output
+      ignore_errors: true
+
+    - name: Print Ruby version
+      ansible.builtin.debug:
+        msg: "{{ ruby_version_output.stdout }}"
+      when: ruby_version_output.rc == 0
+
+    - name: Turn off rdoc installation for gem installation
+      ansible.builtin.lineinfile:
+        path: /etc/gemrc
+        line: "gem: --no-document"
+        create: yes
+
+    - name: Update RubyGems to the latest version
+      ansible.builtin.command:
+        cmd: gem update --system

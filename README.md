@@ -1,5 +1,11 @@
 # HiveGrid
 
+## Tasks
+
+You can copy the value of ror_key_secret_name from the output of the terraform apply.
+
+- Set ROR_SECRET_KEY environment variable to "ror_key_secret-b9fa2g7k"
+
 ## Packer Image
 
 The Packer prebuilt image provides Postgresql, Redis, Caddy and more. See [versions](./VERSIONS.md) for more details.
@@ -46,6 +52,19 @@ The image is tested using Goss.
 ```bash
 curl http://localhost:8080/healthz | jq .
 ```
+
+## Goss Test Setup
+
+- Review the Packer and Terraform template
+- Manually run goss autoadd on the server.
+- Copy the generated file on the server to tests/goss.yaml file in the project
+
+## Tasks
+
+- Update the steps for different stages: Base Image, Custom Image and Provisioning
+- Remove hard-coded AWS Secrets id in javascript/keyDownload.js
+- Update goss.yaml by running goss autoadd for all services (after the image creation by Packer stabilizes)
+- Update the inventory_file with the public static IP of EC2 instance and the port number where sshd is running
 
 ## Toolchain
 

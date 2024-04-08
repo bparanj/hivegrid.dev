@@ -1,0 +1,86 @@
+package:
+  build-essential:
+    installed: true
+  curl:
+    installed: true
+  git:
+    installed: true
+  libdb-dev:
+    installed: true
+  libffi-dev:
+    installed: true
+  libgdbm-dev:
+    installed: true
+  libgdbm6:
+    installed: true
+  libgmp-dev:
+    installed: true
+  libncurses5-dev:
+    installed: true
+  libreadline-dev:
+    installed: true
+  libssl-dev:
+    installed: true
+  libyaml-dev:
+    installed: true
+  locales:
+    installed: true
+  patch:
+    installed: true
+  pkg-config:
+    installed: true
+  rustc:
+    installed: true
+  uuid-dev:
+    installed: true
+  zlib1g-dev:
+    installed: true
+  tzdata:
+    installed: true
+  openssl:
+    installed: true
+  python3:
+    installed: true
+  openssh-client:
+    installed: true
+  caddy:
+    installed: true
+    versions:
+      - 2.7.6
+  fail2ban:
+    installed: true
+    versions:
+      - 0.11.2-6
+port:
+    tcp:2019:
+        listening: true
+        ip:
+            - 127.0.0.1
+    tcp:2222:
+        listening: true
+        ip:
+            - 0.0.0.0
+    tcp6:80:
+        listening: true
+        ip:
+            - '::'
+    tcp6:2222:
+        listening: true
+        ip:
+            - '::'
+service:
+    caddy:
+        enabled: true
+        running: true
+    fail2ban:
+        enabled: true
+        running: true
+    postgresql:
+        enabled: true
+        running: true
+    redis:
+        enabled: true
+        running: true
+    sshd:
+        enabled: true
+        running: true
