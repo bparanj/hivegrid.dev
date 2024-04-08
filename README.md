@@ -5,6 +5,7 @@
 You can copy the value of ror_key_secret_name from the output of the terraform apply.
 
 - Set ROR_SECRET_KEY environment variable to "ror_key_secret-b9fa2g7k"
+- Run iac/docs/boto/create-iam.md in hive project. Test and provide documentation for the documented steps on hivegrid.dev
 
 ## Packer Image
 
