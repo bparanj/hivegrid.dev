@@ -57,7 +57,22 @@ If the image created by Packer does not meet your needs, you can customize the P
 
 ## Tasks
 
+- Packages Needed : Run a new Rails 7 generator and copy the packages in the Dockerfile
 - [Preflight Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/README.md)
 - [Provision Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/PROVISION.md)
 - [AWS CLI on Mac](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/10.md)
 - [Troubleshooting Guide](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/toc.md)
+
+## Utilities
+
+- [Test SSH Connection](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/deployer/ssh-connection.md)
+- [AWS CLI Setup](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/ansible/boto-setup.md)
+- [Ansible Lint](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/ansible/lint.md)
+
+## Concepts
+
+- [Ansible Pipelining](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/pipelining.md)
+- [Project Structure](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/project-structure.md)
+- [SCP if SSH](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/scp_if_ssh.md)
+- [Timzone](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/timezone.md)
+
