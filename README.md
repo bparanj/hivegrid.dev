@@ -57,6 +57,8 @@ If the image created by Packer does not meet your needs, you can customize the P
 
 ## Tasks
 
+- Boto3 code to attach a policy to IAM user
+- Refer the playbooks and document the high level tasks done for the task description
 - Packages Needed : Run a new Rails 7 generator and copy the packages in the Dockerfile
 - [Preflight Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/README.md)
 - [Provision Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/PROVISION.md)
