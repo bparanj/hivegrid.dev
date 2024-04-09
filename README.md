@@ -10,6 +10,7 @@ Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
 | Configure         | Configure the software at runtime. Includes port settings, TLS certs, service discovery, leaders, followers, replication, etc.            | Ansible          |
 | Provision         | Provision the infrastructure. Includes servers, load balancers, network configuration, firewall settings, IAM permissions, etc.           | Terraform        |
 
+To learn why these tools are selected for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
 ## Packer Image
 
@@ -84,10 +85,6 @@ For adding tests:
 - Review the Packer and Terraform template
 - Manually `run goss autoadd` on the server
 - Copy the generated file on the server to tests/goss.yaml file in the project
-
-## Toolchain
-
-To learn why these tools are selected for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
 ## Utilities
 
