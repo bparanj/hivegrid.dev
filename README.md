@@ -86,7 +86,7 @@ You can use Capistrano to deploy your Rails 7.1 app to the provisioned server.
 
 ## Testing
 
-The image is tested using Goss. The tests folder contains the tests.
+The image is tested using Goss. The tests folder contains the tests. SSH into your EC2 instance and run:
 
 ```bash
 curl http://localhost:8080/healthz | jq .
