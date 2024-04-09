@@ -1,28 +1,40 @@
 # HiveGrid
 
-## Tasks
-
-You can copy the value of ror_key_secret_name from the output of the terraform apply.
-
-- Set ROR_SECRET_KEY environment variable to "ror_key_secret-b9fa2g7k"
-- Run iac/docs/boto/create-iam.md in hive project. Test and provide documentation for the documented steps on hivegrid.dev
+Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
 
 ## Packer Image
 
-The Packer prebuilt image provides Postgresql, Redis, Caddy and more. See [versions](./VERSIONS.md) for more details.
+The custom AMI created by Packer provides:
+
+| Name         | Version                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| Ruby         | 3.3.0                                                                                    |
+| RubyGem      | 2.3.6                                                                                    |
+| Goss         | 0.4.4                                                                                    |
+| Caddy        | 2.7.6                                                                                    |
+| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
+| Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
+| Git          | git version 2.34.1                                                                       |
+
+See [versions](./VERSIONS.md) for more details.
+
+### Customization
+
+If the image created by Packer does not meet your needs, you can customize the Packer template to change the base image and change what is included in the master playbook in ansible/playbooks/master_playbook.yml. For instance, you can create a new playbook for MySQL and replace the Postgres playbook. You can change the versions for Ruby, Postgresql, Redis etc in the existing playbooks in ansible/playbooks folder.
 
 ## Terraform Provisioning
 
 The Terraform template uses the custom AMI created by Packer to provision an EC2 instance with the following configuration:
 
-- Instance Type: c5.4xlarge
+- Instance Type: t2.medium
 - Region: us-west-2
-- etc
+
+See [main.tf](./terraform/main.tf) for more details.
 
 ### Prerequisites
 
 - AWS account
-- IAM role with proper policy for EC2, S3 and AWS secrets manager
+- IAM role with appropriate policy for EC2, S3 and AWS secrets manager
 
 The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance. The only reason it is stored in the secrets manager is that once you download the PEM file, you will not be able to access it again. If you don't want to pay for the AWS secrets, after you download the file, you can delete it from your AWS console.
 
@@ -42,48 +54,31 @@ Ansible is used as the provisioner in Packer. The playbooks are included in the 
 - Install and Setup Redis
 - Set server timezone to UTC
 
-## Deployment
+See [playbooks](./PLAYBOOKS.md) for more details.
 
-You can use Capistrano to deploy your Rails 7.1 app to the provisioned server
+## Deploying Rails App
+
+You can use Capistrano to deploy your Rails 7.1 app to the provisioned server.
 
 ## Testing
 
-The image is tested using Goss. 
+The image is tested using Goss. The tests folder contains the tests.
 
 ```bash
 curl http://localhost:8080/healthz | jq .
 ```
 
-## Goss Test Setup
+### Goss Test Setup
+
+For adding tests:
 
 - Review the Packer and Terraform template
-- Manually run goss autoadd on the server.
+- Manually `run goss autoadd` on the server
 - Copy the generated file on the server to tests/goss.yaml file in the project
-
-## Tasks
-
-- Update the steps for different stages: Base Image, Custom Image and Provisioning
-- Remove hard-coded AWS Secrets id in javascript/keyDownload.js
-- Update goss.yaml by running goss autoadd for all services (after the image creation by Packer stabilizes)
-- Update the inventory_file with the public static IP of EC2 instance and the port number where sshd is running
 
 ## Toolchain
 
 To learn why these tools are selected for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
-
-## Customization
-
-If the image created by Packer does not meet your needs, you can customize the Packer template to change the versions for Ruby, Postgresql, Redis etc.
-
-## Tasks
-
-- Boto3 code to attach a policy to IAM user
-- Refer the playbooks and document the high level tasks done for the task description
-- Packages Needed : Run a new Rails 7 generator and copy the packages in the Dockerfile
-- [Preflight Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/README.md)
-- [Provision Checklist](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/PROVISION.md)
-- [AWS CLI on Mac](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/10.md)
-- [Troubleshooting Guide](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/toc.md)
 
 ## Utilities
 
@@ -97,4 +92,3 @@ If the image created by Packer does not meet your needs, you can customize the P
 - [Project Structure](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/project-structure.md)
 - [SCP if SSH](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/scp_if_ssh.md)
 - [Timzone](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/timezone.md)
-
