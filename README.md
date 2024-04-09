@@ -2,6 +2,15 @@
 
 Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
 
+### Project Scope
+
+| Task              | Description                                                                                                                               | Tools            |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| Install           | Install the software binaries and all dependencies.                                                                                       | Ansible, Packer  |
+| Configure         | Configure the software at runtime. Includes port settings, TLS certs, service discovery, leaders, followers, replication, etc.            | Ansible          |
+| Provision         | Provision the infrastructure. Includes servers, load balancers, network configuration, firewall settings, IAM permissions, etc.           | Terraform        |
+
+
 ## Packer Image
 
 The custom AMI created by Packer provides:
@@ -10,11 +19,11 @@ The custom AMI created by Packer provides:
 | ------------ | ---------------------------------------------------------------------------------------- |
 | Ruby         | 3.3.0                                                                                    |
 | RubyGem      | 2.3.6                                                                                    |
-| Goss         | 0.4.4                                                                                    |
 | Caddy        | 2.7.6                                                                                    |
 | PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
 | Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
 | Git          | git version 2.34.1                                                                       |
+| Goss         | 0.4.4                                                                                    |
 
 See [versions](./VERSIONS.md) for more details.
 
@@ -29,7 +38,7 @@ The Terraform template uses the custom AMI created by Packer to provision an EC2
 - Instance Type: t2.medium
 - Region: us-west-2
 
-See [main.tf](./terraform/main.tf) for more details.
+See [main.tf](./terraform/main.tf) for more details. You can change it in terraform/variables.tf.
 
 ### Prerequisites
 
