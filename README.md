@@ -20,7 +20,7 @@ See [versions](./VERSIONS.md) for more details.
 
 ### Customization
 
-If the image created by Packer does not meet your needs, you can customize the Packer template to change the base image and change what is included in the master playbook in ansible/playbooks/master_playbook.yml. For instance, you can create a new playbook for MySQL and replace the Postgres playbook. You can change the versions for Ruby, Postgresql, Redis etc in the existing playbooks in ansible/playbooks folder.
+If the image created by Packer does not meet your needs, you can customize the Packer template in packer/aws-ubuntu.pkr.hck to change the base image and change what is included in the master playbook in ansible/playbooks/master_playbook.yml. For instance, you can create a new playbook for MySQL and replace the Postgres playbook. You can change the versions for Ruby, Postgresql, Redis etc in the existing playbooks in ansible/playbooks folder.
 
 ## Terraform Provisioning
 
@@ -42,7 +42,7 @@ AWS S3 is used for database backups.
 
 ## Ansible Playbooks
 
-Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image. The playbooks provide:
+Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
 
 - Install required packages on Ubuntu 22.04
 - Install and configure Fail2ban
@@ -91,4 +91,4 @@ To learn why these tools are selected for provisioning the server, read [Toolcha
 - [Ansible Pipelining](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/pipelining.md)
 - [Project Structure](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/project-structure.md)
 - [SCP if SSH](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/scp_if_ssh.md)
-- [Timzone](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/timezone.md)
+- [Timezone](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/timezone.md)
