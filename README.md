@@ -100,15 +100,10 @@ For adding tests:
 - Manually `run goss autoadd` on the server
 - Copy the generated file on the server to tests/goss.yaml file in the project
 
-## Utilities
+## Contributing
 
-- [Test SSH Connection](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/deployer/ssh-connection.md)
-- [AWS CLI Setup](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/ansible/boto-setup.md)
-- [Ansible Lint](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/ansible/lint.md)
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project.
 
-## Concepts
+## License
 
-- [Ansible Pipelining](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/pipelining.md)
-- [Project Structure](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/project-structure.md)
-- [SCP if SSH](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/scp_if_ssh.md)
-- [Timezone](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/timezone.md)
+HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
