@@ -1,16 +1,16 @@
 # HiveGrid
 
-Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
+A toolchain to provision a EC2 instance to run your Rails 7 apps on AWS. Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
 
 ### Project Scope
 
-| Task              | Description                                                                                                                               | Tools            |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| Install           | Install the software binaries and all dependencies.                                                                                       | Ansible, Packer  |
-| Configure         | Configure the software at runtime. Includes port settings, TLS certs, service discovery, leaders, followers, replication, etc.            | Ansible          |
-| Provision         | Provision the infrastructure. Includes servers, load balancers, network configuration, firewall settings, IAM permissions, etc.           | Terraform        |
+| Task              | Description                                                                                                 | Tools            |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
+| Install           | Install the software binaries and all dependencies                                                          | Ansible, Packer  |
+| Configure         | Configure the software at runtime. TLS certs, firewall settings etc                                         | Ansible          |
+| Provision         | Provision the infrastructure. Includes servers, network configuration, IAM permissions                      | Terraform        |
 
-To learn why these tools are selected for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
+To learn why these tools are used for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
 ## Packer Image
 
@@ -41,6 +41,8 @@ The Terraform template uses the custom AMI created by Packer to provision an EC2
 
 See [main.tf](./terraform/main.tf) for more details. You can change it in terraform/variables.tf.
 
+## Getting Started
+
 ### Prerequisites
 
 - AWS account
@@ -49,6 +51,18 @@ See [main.tf](./terraform/main.tf) for more details. You can change it in terraf
 The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance. The only reason it is stored in the secrets manager is that once you download the PEM file, you will not be able to access it again. If you don't want to pay for the AWS secrets, after you download the file, you can delete it from your AWS console.
 
 AWS S3 is used for database backups.
+
+### Steps
+
+Clone this project. From the root of the project, run the Terraform template:
+
+```bash
+terraform apply terraform/main.tf
+```
+
+## Where to Get Help
+
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
 
 ## Ansible Playbooks
 
