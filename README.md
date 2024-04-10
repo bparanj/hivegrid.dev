@@ -83,6 +83,20 @@ The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 
 
 AWS S3 is used for database backups.
 
+### Download PEM File
+
+To install dependencies, go to javascript folder directory and run:
+
+```
+npm install
+```
+
+To download the PEM file, run:
+
+```bash
+node keyDownload.js
+```
+
 ### Steps
 
 Clone this project. From the root of the project, run the Terraform template:
