@@ -14,6 +14,20 @@ To learn why these tools are used for provisioning the server, read [Toolchain](
 
 ## Packer Image
 
+```mermaid
+graph LR
+    A[Base Image] --> B(Packer)
+    B --> C(Ansible)
+    C --> D[Custom Image]
+```
+
+* **Base Image:**  This is your starting point. It is a generic operating system image (e.g., Ubuntu, CentOS).
+* **Packer:** This is the tool that automates the process of image creation. You define the desired configuration of your custom image in a Packer template.
+* **Ansible:** Packer uses Ansible as a provisioner to configure and customize the base image.
+* **Custom Image:** This is the final product produced by Packer. It includes all the modifications you specified, such as:
+    * Installed software packages
+    * System configurations
+
 The custom AMI created by Packer provides:
 
 | Name         | Version                                                                                  |
@@ -33,6 +47,23 @@ See [versions](./VERSIONS.md) for more details.
 If the image created by Packer does not meet your needs, you can customize the Packer template in packer/aws-ubuntu.pkr.hck to change the base image and change what is included in the master playbook in ansible/playbooks/master_playbook.yml. For instance, you can create a new playbook for MySQL and replace the Postgres playbook. You can change the versions for Ruby, Postgresql, Redis etc in the existing playbooks in ansible/playbooks folder.
 
 ## Terraform Provisioning
+
+The custom image is the input to Terraform and the output is a running EC2 instance:
+
+```mermaid
+graph LR
+    A[Custom Image] --> B(Terraform)
+    B --> C[EC2 Instance]
+```
+
+1. The custom image, which was created using Packer and Ansible, serves as an input to Terraform.
+2. Terraform, as an infrastructure as code (IaC) tool, uses the custom image to define and provision the desired infrastructure.
+3. Terraform creates an EC2 instance based on the specifications defined in the Terraform configuration files.
+4. The EC2 instance is launched using the custom image, ensuring that it includes all the necessary software, configurations, and customizations.
+
+This diagram illustrates the workflow where the custom image, created through the Packer and Ansible process, is consumed by Terraform to provision an EC2 instance. Terraform allows you to define the desired state of your infrastructure using declarative configuration files, and it automatically provisions and manages the EC2 instance based on that configuration.
+
+By using a custom image as the foundation for the EC2 instance, you can ensure that the instance is pre-configured with the required software and settings, reducing the need for manual setup and configuration after the instance is launched.
 
 The Terraform template uses the custom AMI created by Packer to provision an EC2 instance with the following configuration:
 
