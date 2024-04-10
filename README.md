@@ -102,7 +102,11 @@ For adding tests:
 
 ## Contributing
 
-Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project.
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
+
+- Ansible playbooks for other SQL and NoSQL database servers
+- Packer and Terraform template for other cloud providers like Digital Ocean, Google Cloud etc
+- Add support for other full stack MVC frameworks like Symfony, Django, Laravel, Spring Boot, Yesod, CakePHP, Phoenix, CodeIgniter etc
 
 ## License
 
