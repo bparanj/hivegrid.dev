@@ -48,7 +48,7 @@ If the image created by Packer does not meet your needs, you can customize the P
 
 ## Terraform Provisioning
 
-The custom image is the input to Terraform and the output is a running EC2 instance:
+The custom image created in the previous step is the input to Terraform and the output is a running EC2 instance:
 
 ```mermaid
 graph LR
@@ -61,11 +61,11 @@ graph LR
 3. Terraform creates an EC2 instance based on the specifications defined in the Terraform configuration files.
 4. The EC2 instance is launched using the custom image, ensuring that it includes all the necessary software, configurations, and customizations.
 
-This diagram illustrates the workflow where the custom image, created through the Packer and Ansible process, is consumed by Terraform to provision an EC2 instance. Terraform allows you to define the desired state of your infrastructure using declarative configuration files, and it automatically provisions and manages the EC2 instance based on that configuration.
+This diagram illustrates the workflow where the custom image, created through the Packer and Ansible, is consumed by Terraform to provision an EC2 instance. Terraform allows you to define the desired state of your infrastructure using declarative configuration files, and it automatically provisions and manages the EC2 instance based on that configuration.
 
-By using a custom image as the foundation for the EC2 instance, you can ensure that the instance is pre-configured with the required software and settings, reducing the need for manual setup and configuration after the instance is launched.
+By using a custom image for the EC2 instance, we ensure that the instance is pre-configured with the required software and settings, reducing manual setup and configuration after the instance is launched.
 
-The Terraform template uses the custom AMI created by Packer to provision an EC2 instance with the following configuration:
+The Terraform template defines the following configuration:
 
 - Instance Type: t2.medium
 - Region: us-west-2
