@@ -27,6 +27,7 @@ You can copy the value of ror_key_secret_name from the output of the terraform a
 - Download the awsdev AWS credentials from AWS console
 - Install AWS CLI
 - [AWS CLI on Mac](https://github.com/bparanj/learning-nuxt/blob/30ad0f16c6cd3c125bcc4a57fa03161730862aa7/iac/prototype/experiments/troubleshooting/docs/10.md)
+- Run aws caller identity
 - [AWS CLI Setup](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/ansible/boto-setup.md)
 - Check the AWS account using AWS CLI: https://github.com/bparanj/learning-nuxt/blob/c685695c0041a52f9d7380fd5e383f2bb1e0c77b/iac/docs/provisioner/aws-account.md?plain=1
 - Setup development environment for boto3.
@@ -37,7 +38,8 @@ You can copy the value of ror_key_secret_name from the output of the terraform a
 
 - Setup the AWS credential environment variables for deploy user
 - Run the terraform template
-- SSH into EC2 instance
+- Use keyDownload.js to download the PEM file
+- SSH into EC2 instance using the PEM file
 - Verify
 
 ### Development Workflow
