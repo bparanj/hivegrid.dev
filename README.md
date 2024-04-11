@@ -208,7 +208,17 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 - Ansible playbooks for other SQL and NoSQL database servers
 - Support other Linux flavors like RHEL, Debian etc.
 - Packer and Terraform template for other cloud providers like Digital Ocean, Google Cloud etc
-- Add support for other full stack MVC frameworks like Symfony, Django, Laravel, Spring Boot, Yesod, CakePHP, Phoenix, CodeIgniter etc
+- Add support for other full stack MVC frameworks like: 
+
+| #    | Framework        | Language     | 
+|------|------------------|--------------|
+| 1    | Ruby on Rails    | Ruby         |
+| 2    | Django           | Python       |
+| 3    | Laravel          | PHP          |
+| 4    | ASP.NET Core MVC | C#           |
+| 5    | Spring Boot      | Java         |
+| 6    | Phoenix          | Elixir       |
+| 7    | Play Framework   | Java/Scala   | 
 
 ## License
 
