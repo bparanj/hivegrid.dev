@@ -207,7 +207,16 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 
 - Ansible playbooks for other SQL and NoSQL database servers
 - Support other Linux flavors like RHEL, Debian etc.
-- Packer and Terraform template for other cloud providers like Digital Ocean, Google Cloud etc
+- Packer and Terraform template for other cloud providers like:
+
+| #    | Provider        |
+|------|-----------------|
+| 1    | Amazon AWS      |
+| 2    | Microsoft Azure |
+| 3    | Google Cloud    |
+| 4    | Digital Ocean   |
+| 5    | Linode          |
+
 - Add support for other full stack MVC frameworks like: 
 
 | #    | Framework        | Language     | 
