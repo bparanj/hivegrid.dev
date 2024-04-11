@@ -221,13 +221,12 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 
 | #    | Framework        | Language     | 
 |------|------------------|--------------|
-| 1    | Ruby on Rails    | Ruby         |
-| 2    | Django           | Python       |
-| 3    | Laravel          | PHP          |
-| 4    | ASP.NET Core MVC | C#           |
-| 5    | Spring Boot      | Java         |
-| 6    | Phoenix          | Elixir       |
-| 7    | Play Framework   | Java/Scala   | 
+| 1    | Django           | Python       |
+| 2    | Laravel          | PHP          |
+| 3    | ASP.NET Core MVC | C#           |
+| 4    | Spring Boot      | Java         |
+| 5    | Phoenix          | Elixir       |
+| 6    | Play Framework   | Java/Scala   |
 
 ## License
 
