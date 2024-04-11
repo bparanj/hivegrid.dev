@@ -1,6 +1,6 @@
 # HiveGrid
 
-A toolchain to provision an EC2 instance to run your Rails 7 apps on AWS. Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists.
+A toolchain to provision an EC2 instance to run your Rails 7 apps on AWS. Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists. If you want to read the entertaining version, read the [background story](./sweat.md).
 
 ### Project Scope
 
@@ -10,9 +10,12 @@ A toolchain to provision an EC2 instance to run your Rails 7 apps on AWS. Read a
 | Configure         | Configure the software at runtime. TLS certs, firewall settings etc                                         | Ansible          |
 | Provision         | Provision the infrastructure. Includes servers, network configuration, IAM permissions                      | Terraform        |
 
+
+These tools have clear separation of responsibilities, making it easier to extend and customize the functionality according to our needs.
+
 ## Choice of Tools
 
-This project leverages the strengths of Ansible, Packer, and Terraform to provision a server on AWS. Ansible's declarative style programming provide flexibility in terms of cloud service choices, software installation and web framework selection. Packer's provider plugins offer flexibility to provision servers on various cloud platforms. Terraform's idempotent nature simplifies the provisioning process with minimal code. We combine these tools and streamline server provisioning on AWS while maintaining adaptability and efficiency.
+We've knitted together Ansible, Packer, and Terraform to whip up servers on AWS like it's nobody's business. Ansible cuts through the configuration chaos, letting us cherry-pick cloud services, slap on software, and select our web framework with a declarative flair. Packer is our Swiss Army knife, slicing across cloud platforms to provision servers without breaking a sweat. And Terraform? It’s the smart cookie that keeps our code lean and mean, thanks to its idempotent magic. Meshing these tools together, we've streamlined our AWS server setup, keeping our workflow slick, adaptable, and blazing fast.
 
 To learn more, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
 
@@ -55,7 +58,22 @@ See [versions](./VERSIONS.md) for more details.
 
 ### Customization
 
-If the image created by Packer does not meet your needs, you can customize the Packer template in packer/aws-ubuntu.pkr.hck to change the base image and change what is included in the master playbook in ansible/playbooks/master_playbook.yml. For instance, you can create a new playbook for MySQL and replace the Postgres playbook. You can change the versions for Ruby, Postgresql, Redis etc in the existing playbooks in ansible/playbooks folder.
+If the image created by Packer does not meet your requirements, you can:
+
+1. Customize the Packer template:
+   - Open the file `packer/aws-ubuntu.pkr.hcl`
+   - Modify the base image and other configurations as needed
+
+2. Modify the master playbook:
+   - Open the file `ansible/playbooks/master_playbook.yml`
+   - Change the included playbooks to suit your needs
+     - For example, you can create a new playbook for MySQL and replace the Postgres playbook
+
+3. Customize versions in existing playbooks:
+   - Go to the `ansible/playbooks` folder
+   - Modify the versions for Ruby, Postgresql, Redis, etc. in the corresponding playbooks
+
+By following these steps, you can tailor the Packer-generated image to your specific requirements.
 
 ## Terraform Provisioning
 
@@ -87,22 +105,25 @@ See [main.tf](./terraform/main.tf) for more details. You can change it in terraf
 
 ### Prerequisites
 
-- AWS account
-- IAM role with appropriate policy for EC2, S3 and AWS secrets manager
+- An AWS account
+- An IAM role with appropriate policies for EC2, S3, and AWS Secrets Manager
 
-The PEM file is stored in AWS secrets manager so that you can SSH into your EC2 instance. The only reason it is stored in the secrets manager is that once you download the PEM file, you will not be able to access it again. If you don't want to pay for the AWS secrets, after you download the file, you can delete it from your AWS console.
+SSH Access:
 
-AWS S3 is used for database backups.
+The PEM file used for SSH access to your EC2 instance, is stored in AWS Secrets Manager. This means you can retrieve the PEM file even if you lose the original downloaded copy. You will be charged for storing the PEM file in Secrets Manager. To avoid the cost, you can delete the PEM file from the AWS console after downloading it.
+
+Database Backups:
+AWS S3 is used for storing database backups.
 
 ### Download PEM File
 
-To install dependencies, go to javascript folder directory and run:
+You must have nodejs installed on your laptop. To install dependencies, go to javascript folder directory and run:
 
 ```
 npm install
 ```
 
-You must set the environment variables to proper values:
+Set the following environment variables to proper values:
 
 ```bash
 AWS_ACCESS_KEY_ID
@@ -110,7 +131,7 @@ AWS_SECRET_ACCESS_KEY
 ROR_SECRET_KEY
 ```
 
-You will see the value for ROR_SECRET_KEY from the output of the `terraform apply` command.
+You will see the value for `ROR_SECRET_KEY` from the output of the `terraform apply` command.
 
 To download the PEM file, run:
 
@@ -120,7 +141,13 @@ node keyDownload.js
 
 ### Steps
 
-Clone this project. From the root of the project, run the Terraform template:
+Clone this project. 
+
+```bash
+git clone git@github.com:bparanj/hivegrid.dev.git
+```
+
+From the root of the project, run the Terraform template:
 
 ```bash
 terraform apply terraform/main.tf
@@ -132,7 +159,7 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to g
 
 ## Ansible Playbooks
 
-Ansible is used as the provisioner in Packer. The playbooks are included in the master playbook. The master playbook is run by Packer to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
+Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
 
 - Install required packages on Ubuntu 22.04
 - Install and configure Fail2ban
