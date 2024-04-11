@@ -91,6 +91,16 @@ To install dependencies, go to javascript folder directory and run:
 npm install
 ```
 
+You must set the environment variables to proper values:
+
+```bash
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+ROR_SECRET_KEY
+```
+
+You will see the value for ROR_SECRET_KEY from the output of the `terraform apply` command.
+
 To download the PEM file, run:
 
 ```bash
@@ -128,6 +138,14 @@ See [playbooks](./PLAYBOOKS.md) for more details.
 ## Deploying Rails App
 
 You can use Capistrano to deploy your Rails 7.1 app to the provisioned server.
+
+```mermaid
+graph LR
+    A[Code] --> B(Capistrano)
+    B -- Deploy --> C[EC2 Instance]
+```
+
+The EC2 instance provisioned using Terraform and the custom image, serves as the target environment for the deployed application.
 
 ## Testing
 
