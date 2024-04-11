@@ -1,6 +1,6 @@
 # HiveGrid
 
-A toolchain to provision a EC2 instance to run your Rails 7 apps on AWS. Why does this project exist? Read [about](https://www.hivegrid.dev/about/).
+A toolchain to provision an EC2 instance to run your Rails 7 apps on AWS. Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists.
 
 ### Project Scope
 
@@ -10,7 +10,18 @@ A toolchain to provision a EC2 instance to run your Rails 7 apps on AWS. Why doe
 | Configure         | Configure the software at runtime. TLS certs, firewall settings etc                                         | Ansible          |
 | Provision         | Provision the infrastructure. Includes servers, network configuration, IAM permissions                      | Terraform        |
 
-To learn why these tools are used for provisioning the server, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
+## Choice of Tools
+
+This project leverages the strengths of Ansible, Packer, and Terraform to provision a server on AWS. Ansible's declarative style programming provide flexibility in terms of cloud service choices, software installation and web framework selection. Packer's provider plugins offer flexibility to provision servers on various cloud platforms. Terraform's idempotent nature simplifies the provisioning process with minimal code. We combine these tools and streamline server provisioning on AWS while maintaining adaptability and efficiency.
+
+To learn more, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/main/iac/docs/basics/toolchain.md)
+
+### Advantages of the Toolchain
+
+- Ensures consistent, reliable, and reproducible environments
+- Automates processes, saving time and reducing human errors
+- Enables easy scalability, configuration, and cross-environment deployment
+- Facilitates version control, collaboration, and rollbacks
 
 ## Packer Image
 
