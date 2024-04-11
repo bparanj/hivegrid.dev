@@ -201,6 +201,23 @@ For adding tests:
 - Manually `run goss autoadd` on the server
 - Copy the generated file on the server to tests/goss.yaml file in the project
 
+## Image Catalog and Provisioning Template
+
+Each image is specific to a given custom image and it uses its corresponding provisioning template.
+
+```mermaid
+graph LR
+  subgraph Rails Stack
+    RailsImage[Rails Stack Image] --> RailsTemplate[Rails Provisioning Template]
+  end
+
+  subgraph Django Stack
+    DjangoImage[Django Stack Image] --> DjangoTemplate[Django Provisioning Template]
+  end
+```
+
+Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
+
 ## Contributing
 
 Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
