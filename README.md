@@ -56,7 +56,7 @@ The custom AMI created by Packer provides:
 
 See [versions](./VERSIONS.md) for more details.
 
-### Customization
+### Customized Image
 
 If the image created by Packer does not meet your requirements, you can:
 
@@ -203,7 +203,7 @@ For adding tests:
 
 ## Image Catalog and Provisioning Template
 
-Each image is specific to a given custom image and it uses its corresponding provisioning template.
+Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
 
 ```mermaid
 graph LR
@@ -216,8 +216,6 @@ graph LR
   end
 ```
 
-Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
-
 ## Contributing
 
 Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
@@ -228,11 +226,10 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 
 | #    | Provider        |
 |------|-----------------|
-| 1    | Amazon AWS      |
-| 2    | Microsoft Azure |
-| 3    | Google Cloud    |
-| 4    | Digital Ocean   |
-| 5    | Linode          |
+| 1    | Microsoft Azure |
+| 2    | Google Cloud    |
+| 3    | Digital Ocean   |
+| 4    | Linode          |
 
 - Add support for other full stack MVC frameworks like: 
 
