@@ -245,3 +245,7 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 ## License
 
 HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Getting Started Guide
+
+[![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
