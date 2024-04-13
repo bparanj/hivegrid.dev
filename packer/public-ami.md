@@ -1,0 +1,1 @@
+aws ec2 disable-image-block-public-access --region us-west-2

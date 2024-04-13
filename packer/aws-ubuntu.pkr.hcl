@@ -36,14 +36,14 @@ source "amazon-ebs" "ubuntu" {
     owners      = var.ami_owners
   }
   ssh_username = "${var.ssh_username}"
-  ami_groups = ["all"]
+  ami_groups   = ["all"]
   tags = {
     "Name"        = "UbuntuImage"
     "Environment" = "Production"
     "OS_Version"  = "Ubuntu 22.04"
     "Release"     = "Latest"
     "Created-by"  = "Packer"
-    "Version"     = "0.0.26"
+    "Version"     = "0.0.1"
   }
 }
 
