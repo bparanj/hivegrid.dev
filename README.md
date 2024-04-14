@@ -106,7 +106,8 @@ See [main.tf](./terraform/main.tf) for more details. You can change it in terraf
 ### Prerequisites
 
 - An AWS account
-- An IAM role with appropriate policies for EC2, S3, and AWS Secrets Manager
+- An IAM user with appropriate policies for EC2, S3, and AWS Secrets Manager
+- Packer and Terraform installed and configured
 
 SSH Access:
 
