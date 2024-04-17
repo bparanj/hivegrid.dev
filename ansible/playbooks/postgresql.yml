@@ -54,14 +54,6 @@
         state: present
       notify: restart postgresql
 
-    - name: Restrict connections to local machine
-      ansible.builtin.lineinfile:
-        path: /etc/postgresql/16/main/pg_hba.conf
-        regexp: '^local\s+all\s+all\s+peer$'
-        line: "local   all             all                                     peer"
-        state: present
-      notify: restart postgresql
-
     - name: Ensure libpq-dev is installed (Ubuntu/Debian)
       ansible.builtin.apt:
         name: libpq-dev
@@ -82,12 +74,22 @@
       become: true
       become_user: postgres
 
-    - name: Add deploy user md5 auth to pg_hba.conf
+
+    - name: Add deploy user md5 auth to pg_hba.conf before general directive
       ansible.builtin.lineinfile:
         path: /etc/postgresql/16/main/pg_hba.conf
+        insertbefore: '^local\s+all\s+all\s+peer$'
         line: "local   all             deploy                                  md5"
         state: present
       become: true
+      notify: restart postgresql
+
+    - name: Ensure general peer authentication is set
+      ansible.builtin.lineinfile:
+        path: /etc/postgresql/16/main/pg_hba.conf
+        regexp: '^local\s+all\s+all\s+peer$'
+        line: "local   all             all                                     peer"
+        state: present
       notify: restart postgresql
 
   handlers:
