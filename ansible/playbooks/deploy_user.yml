@@ -23,3 +23,27 @@
       ansible.builtin.file:
         path: /etc/sudoers.d/deploy
         mode: "0440"
+
+    - name: Create .ssh directory for deploy user
+      ansible.builtin.file:
+        path: "/home/deploy/.ssh"
+        state: directory
+        mode: "0700"
+        owner: deploy
+        group: deploy
+
+    - name: Create authorized_keys file for deploy user
+      ansible.builtin.file:
+        path: "/home/deploy/.ssh/authorized_keys"
+        state: touch
+        mode: "0600"
+        owner: deploy
+        group: deploy
+
+    - name: Ensure ownership of .ssh directory
+      ansible.builtin.file:
+        path: "/home/deploy/.ssh"
+        state: directory
+        owner: deploy
+        group: deploy
+        recurse: yes

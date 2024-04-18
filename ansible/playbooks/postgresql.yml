@@ -74,7 +74,6 @@
       become: true
       become_user: postgres
 
-
     - name: Add deploy user md5 auth to pg_hba.conf before general directive
       ansible.builtin.lineinfile:
         path: /etc/postgresql/16/main/pg_hba.conf

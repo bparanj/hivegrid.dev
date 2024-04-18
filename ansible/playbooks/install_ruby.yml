@@ -2,8 +2,11 @@
 - name: Install Ruby using ruby-install from source
   hosts: all
   become: true
+  vars:
+    ruby_version: "latest"  # This can be changed to any specific Ruby version you need.
+
   tasks:
-    - name: Install dependencies for ruby-install # This is a list of self contained packages that are required to build Ruby from source
+    - name: Install dependencies for ruby-install
       ansible.builtin.package:
         name:
           - git
@@ -24,7 +27,7 @@
       ansible.builtin.git:
         repo: "https://github.com/postmodern/ruby-install.git"
         dest: "/usr/local/src/ruby-install"
-        version: "master" # You can specify a tag or commit hash here if needed
+        version: "master"
 
     - name: Install ruby-install
       ansible.builtin.shell:
@@ -33,24 +36,26 @@
 
     - name: Install the latest Ruby version using ruby-install
       ansible.builtin.command:
-        cmd: "ruby-install --system ruby"
+        cmd: "ruby-install --system ruby {{ ruby_version }}"
 
     - name: Set global environment variables for Ruby
-      ansible.builtin.lineinfile:
+      ansible.builtin.blockinfile:
         path: /etc/profile.d/ruby.sh
+        block: |
+          export GEM_HOME="$HOME/.gem"
+          export GEM_PATH="$HOME/.gem"
+          export PATH="$HOME/.gem/bin:$PATH:/opt/rubies/ruby-{{ ruby_version }}/bin"
         create: true
-        line: 'export PATH="$PATH:/opt/rubies/ruby-{{ ruby_version }}/bin"'
-      vars:
-        ruby_version: latest # This needs to be updated manually or determined dynamically
+        marker: "# {mark} ANSIBLE MANAGED BLOCK"
 
     - name: Verify Ruby installation
       ansible.builtin.shell:
         cmd: |
           source /etc/profile && ruby -v
-      args:
-        executable: /bin/bash
-      register: ruby_version_output
-      ignore_errors: true
+        args:
+          executable: /bin/bash
+        register: ruby_version_output
+        ignore_errors: true
 
     - name: Print Ruby version
       ansible.builtin.debug:
@@ -61,7 +66,7 @@
       ansible.builtin.lineinfile:
         path: /etc/gemrc
         line: "gem: --no-document"
-        create: yes
+        create: true
 
     - name: Update RubyGems to the latest version
       ansible.builtin.command:
