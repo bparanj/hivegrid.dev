@@ -21,10 +21,10 @@ To learn more, read [Toolchain](https://github.com/bparanj/learning-nuxt/blob/ma
 
 ### Advantages of the Toolchain
 
-- Ensures consistent, reliable, and reproducible environments
+- Ensures consistent, reliable and reproducible environments
 - Automates processes, saving time and reducing human errors
 - Enables easy scalability, configuration, and cross-environment deployment
-- Facilitates version control, collaboration, and rollbacks
+- Facilitates version control, collaboration and rollbacks
 
 ## Packer Image
 
@@ -41,6 +41,8 @@ graph LR
 * **Custom Image:** This is the final product produced by Packer. It includes all the modifications you specified, such as:
     * Installed software packages
     * System configurations
+
+## Rails Stack
 
 The custom AMI created by Packer provides:
 
