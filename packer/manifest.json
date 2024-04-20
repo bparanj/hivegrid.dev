@@ -260,7 +260,16 @@
       "artifact_id": "us-west-2:ami-0be64d87af41c5eab",
       "packer_run_uuid": "07ed4d9a-e81f-04af-92b6-36ebc8fe0eeb",
       "custom_data": null
+    },
+    {
+      "name": "ubuntu",
+      "builder_type": "amazon-ebs",
+      "build_time": 1713638340,
+      "files": null,
+      "artifact_id": "us-west-2:ami-08cc98e6f7501c509",
+      "packer_run_uuid": "7c8b78c3-13b1-4464-302f-5d5d93b03e87",
+      "custom_data": null
     }
   ],
-  "last_run_uuid": "07ed4d9a-e81f-04af-92b6-36ebc8fe0eeb"
+  "last_run_uuid": "7c8b78c3-13b1-4464-302f-5d5d93b03e87"
 }

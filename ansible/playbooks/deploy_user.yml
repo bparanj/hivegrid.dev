@@ -47,3 +47,17 @@
         owner: deploy
         group: deploy
         recurse: yes
+
+    - name: Ensure deployment directories exist
+      ansible.builtin.file:
+        path: "/home/deploy/apps"
+        state: directory
+        mode: '0755'
+
+    - name: Recursively change ownership of deployment directory
+      ansible.builtin.file:
+        path: "/home/deploy/apps"
+        state: directory
+        owner: deploy
+        group: deploy
+        recurse: yes

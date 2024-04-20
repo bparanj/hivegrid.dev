@@ -3,11 +3,11 @@
   hosts: all
   become: true
   vars:
-    ssh_port: 2222 # New SSH port (change as needed)
+    ssh_port: 2222  # New SSH port (change as needed)
 
   tasks:
     - name: Create Ansible temporary directory
-      file:
+      ansible.builtin.file:
         path: /root/.ansible/tmp
         state: directory
         mode: '0775'
@@ -20,7 +20,6 @@
         regexp: '^(#)?PermitRootLogin'
         line: 'PermitRootLogin no'
         state: present
-      notify: Restart SSH service to apply changes
 
     - name: Disable password authentication
       ansible.builtin.lineinfile:
@@ -28,7 +27,20 @@
         regexp: '^(#)?PasswordAuthentication'
         line: 'PasswordAuthentication no'
         state: present
-      notify: Restart SSH service to apply changes
+
+    - name: Enable public key authentication
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^(#)?PubkeyAuthentication'
+        line: 'PubkeyAuthentication yes'
+        state: present
+
+    - name: Set authorized keys file path
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^(#)?AuthorizedKeysFile'
+        line: 'AuthorizedKeysFile .ssh/authorized_keys'
+        state: present
 
     - name: Change default SSH port
       ansible.builtin.lineinfile:
@@ -36,10 +48,8 @@
         regexp: '^#?Port'
         line: 'Port {{ ssh_port }}'
         state: present
-      notify: Restart SSH service to apply changes
 
-  handlers:
-    - name: Restart SSH service to apply changes
+    - name: Restart SSH service
       ansible.builtin.service:
         name: ssh
         state: restarted
