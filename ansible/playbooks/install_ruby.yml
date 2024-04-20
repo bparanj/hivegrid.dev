@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars:
-    ruby_version: "latest"  # This can be changed to any specific Ruby version you need.
+    ruby_version: "3.3.0"  # This can be changed to any specific Ruby version you need.
 
   tasks:
     - name: Install dependencies for ruby-install
@@ -50,12 +50,10 @@
 
     - name: Verify Ruby installation
       ansible.builtin.shell:
-        cmd: |
-          source /etc/profile && ruby -v
-        args:
-          executable: /bin/bash
-        register: ruby_version_output
-        ignore_errors: true
+        cmd: "source /etc/profile && ruby -v"
+        executable: /bin/bash
+      register: ruby_version_output
+      ignore_errors: true
 
     - name: Print Ruby version
       ansible.builtin.debug:
@@ -70,4 +68,4 @@
 
     - name: Update RubyGems to the latest version
       ansible.builtin.command:
-        cmd: gem update --system
+        cmd: "gem update --system"
