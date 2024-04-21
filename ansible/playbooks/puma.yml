@@ -1,0 +1,27 @@
+---
+- name: Configure Puma Systemd Service
+  hosts: all
+  become: true
+
+  vars:
+    app_name: "{{ app_name }}"  # This will be overridden by command-line input
+
+  tasks:
+    - name: Copy the Puma systemd service file from template
+      ansible.builtin.template:
+        src: ../templates/puma.service.j2
+        dest: /etc/systemd/system/puma.service
+      notify:
+        - reload systemd
+        - restart puma service
+
+  handlers:
+    - name: reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+    - name: restart puma service
+      ansible.builtin.systemd:
+        name: puma
+        state: restarted
+        enabled: yes

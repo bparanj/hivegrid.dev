@@ -1,0 +1,18 @@
+---
+- name: Restart Puma Service Playbook
+  hosts: all
+  become: true 
+  tasks:
+    - name: Restart Puma service
+      ansible.builtin.systemd:
+        name: puma
+        state: restarted
+        enabled: yes  # Ensures the service is enabled to start at boot
+      become: true  # Run task as sudo
+
+    - name: Verify Puma service is running
+      ansible.builtin.systemd:
+        name: puma
+        state: started
+      register: puma_status
+      failed_when: puma_status.status.ActiveState != "active"

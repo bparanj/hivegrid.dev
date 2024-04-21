@@ -1,0 +1,16 @@
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/home/deploy/apps/{{ app_name }}/current
+ExecStart=/bin/bash -lc 'bundle exec puma -C /home/deploy/apps/{{ app_name}}/current/config/puma.rb -e production'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
