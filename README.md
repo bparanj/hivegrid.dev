@@ -1,6 +1,8 @@
 # HiveGrid
 
-A toolchain to provision an EC2 instance to run your Rails 7 apps on AWS. Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists. If you want to read the entertaining version, read the [background story](./sweat.md).
+HiveGrid simplifies the deployment of Rails 7 applications by automating the installation, configuration, and provisioning of EC2 instances. HiveGrid is a toolchain for provisioning an EC2 instance to run Rails 7 apps on AWS. 
+
+Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists. If you want to read the entertaining version, read the [background story](./sweat.md).
 
 ### Project Scope
 
