@@ -19,7 +19,7 @@ These tools have clear separation of responsibilities, making it easier to exten
 
 We've knitted together Ansible, Packer, and Terraform to whip up servers on AWS like it's nobody's business. Ansible cuts through the configuration chaos, letting us cherry-pick cloud services, slap on software, and select our web framework with a declarative flair. Packer is our Swiss Army knife, slicing across cloud platforms to provision servers without breaking a sweat. And Terraform? It’s the smart cookie that keeps our code lean and mean, thanks to its idempotent magic. Meshing these tools together, we've streamlined our AWS server setup, keeping our workflow slick, adaptable, and blazing fast.
 
-To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain.md)
+To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 
 ### Advantages of the Toolchain
 
