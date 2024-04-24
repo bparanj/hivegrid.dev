@@ -257,3 +257,5 @@ HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT
 ### Create a AWS Account
 
 [![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
+
+More videos to walk you through each step is coming soon.
