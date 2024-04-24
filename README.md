@@ -282,8 +282,9 @@ graph TD
     B --> C[Provision a Server]
     C --> D[Setup DNS Records]
     D --> E[Run SSL playbook]
-    E --> F[Change DB Password]
-    F --> G[Capistrano Deploy]
+    E --> F[Run Puma playbook]
+    F --> G[Change DB Password]
+    G --> H[Capistrano Deploy]
 ```
 
 Create Image step is optional. It is only required if you the default image does not fit your needs.
