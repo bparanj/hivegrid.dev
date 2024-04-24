@@ -277,19 +277,11 @@ More videos to walk you through each step is coming soon.
 ## Sequence at a High Level
 
 ```mermaid
-sequenceDiagram
-    participant A as Create IAM dev user
-    participant B as Create Image (Optional)
-    participant C as Provision a Server
-    participant D as Setup DNS Records
-    participant E as Run SSL playbook
-    participant F as Change DB Password
-    participant G as Capistrano Deploy
-
-    A->>B: Next (optional)
-    B->>C: Next
-    C->>D: Next
-    D->>E: Next
-    E->>F: Next
-    F->>G: Next
+graph TD
+    A[Create IAM dev user] --> B[Create Image (Optional)]
+    B --> C[Provision a Server]
+    C --> D[Setup DNS Records]
+    D --> E[Run SSL playbook]
+    E --> F[Change DB Password]
+    F --> G[Capistrano Deploy]
 ```
