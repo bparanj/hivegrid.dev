@@ -181,7 +181,7 @@ See [playbooks](./PLAYBOOKS.md) for more details.
 
 ## Deploying Rails App
 
-You can use Capistrano to deploy your Rails 7.1 app to the provisioned server.
+You can use Capistrano to deploy your Rails 7.1 app to the provisioned server. We will be using dotenv gem to manage environment variables on the production server.
 
 ```mermaid
 graph LR
