@@ -278,7 +278,7 @@ More videos to walk you through each step is coming soon.
 
 ```mermaid
 graph TD
-    A[Create IAM dev user] --> B[Create Image (Optional)]
+    A[Create IAM dev user] --> B[Create Image \(Optional\)]
     B --> C[Provision a Server]
     C --> D[Setup DNS Records]
     D --> E[Run SSL playbook]
