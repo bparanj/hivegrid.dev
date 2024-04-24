@@ -273,3 +273,23 @@ Your custom hooks can be cloud-init, code written using Ruby, Python, Java or an
 [![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
 
 More videos to walk you through each step is coming soon.
+
+## Sequence at a High Level
+
+```mermaid
+sequenceDiagram
+    participant A as Create IAM dev user
+    participant B as Create Image (Optional)
+    participant C as Provision a Server
+    participant D as Setup DNS Records
+    participant E as Run SSL playbook
+    participant F as Change DB Password
+    participant G as Capistrano Deploy
+
+    A->>B: Next (optional)
+    B->>C: Next
+    C->>D: Next
+    D->>E: Next
+    E->>F: Next
+    F->>G: Next
+```
