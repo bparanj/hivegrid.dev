@@ -189,7 +189,7 @@ graph LR
     B -- Deploy --> C[EC2 Instance]
 ```
 
-The EC2 instance provisioned using Terraform and the custom image, serves as the target environment for the deployed application.
+The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
 
 ## Testing
 
@@ -251,6 +251,20 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 ## License
 
 HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Hooks
+
+You can customize the process in any of the following phases:
+
+1. Base Image
+2. Your Custom Hook
+3. Custom Image - Packer Build
+4. Your Custom Hook
+5. Provision Instance - Terraform Provision
+6. Your Custom Hook
+7. Capistrano Deploy
+
+Your custom hooks can be cloud-init, code written using Ruby, Python, Java or any other SDK for AWS.
 
 ## Getting Started Guide
 
