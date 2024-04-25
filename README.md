@@ -274,7 +274,7 @@ Your custom hooks can be cloud-init, code written using Ruby, Python, Java or an
 
 More videos to walk you through each step is coming soon.
 
-## Sequence at a High Level
+## Process at a High Level
 
 ```mermaid
 graph TD
@@ -288,3 +288,13 @@ graph TD
 ```
 
 Create Image step is optional. It is only required if the default image does not fit your needs.
+
+## Request Flow
+
+```mermaid
+graph LR
+    title Web Request Flow
+    A[Browser] --> B[Caddy]
+    B --> C[Puma]
+    C --> D[PostgreSQL]
+```
