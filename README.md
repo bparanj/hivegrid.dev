@@ -6,7 +6,9 @@ Read about the [background](https://www.hivegrid.dev/about/) to learn why this p
 
 ## Purpose
 
-The purpose of this product is to provide developers at companies with limited or no DevOps resources with an automated software delivery tool that utilizes a declarative language for infrastructure specification. This tool is designed to drastically reduce the time spent on manual infrastructure tasks—from days to just minutes—allowing developers to focus more on application development rather than deployment complexities. It targets those comfortable with command-line, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency.
+The purpose of this product is to automate the software delivery process by providing a toolchain that leverages Packer, Terraform, Ansible, and cloud provider SDKs. The toolchain simplifies infrastructure management tasks by offering a declarative language, pre-built templates for common use cases and glue code to integrate with cloud providers.
+
+It targets developers at companies with limited or no DevOps resources, drastically reducing the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in their software delivery workflow.
 
 ## Project Scope
 
