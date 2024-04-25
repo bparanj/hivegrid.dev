@@ -278,13 +278,15 @@ More videos to walk you through each step is coming soon.
 
 ```mermaid
 graph TD
-    A[Create IAM dev user] --> B[Create Image]
-    B --> C[Provision a Server]
-    C --> D[Setup DNS Records]
-    D --> E[Run SSL playbook]
-    E --> F[Run Puma playbook]
-    F --> G[Change DB Password]
-    G --> H[Capistrano Deploy]
+    A[Create IAM dev user] --> B{Default Image Fits Needs?}
+    B -->|Yes| C[Provision a Server]
+    B -->|No| D[Create Image]
+    D --> C
+    C --> E[Setup DNS Records]
+    E --> F[Run SSL playbook]
+    F --> G[Run Puma playbook]
+    G --> H[Change DB Password]
+    H --> I[Capistrano Deploy]
 ```
 
 Create Image step is optional. It is only required if the default image does not fit your needs.
