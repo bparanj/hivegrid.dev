@@ -4,7 +4,11 @@ HiveGrid is a toolchain that simplifies the deployment of Rails 7 applications o
 
 Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists or the entertaining [background story](./sweat.md).
 
-### Project Scope
+## Purpose
+
+The purpose of this product is to provide developers at companies with limited or no DevOps resources with an automated software delivery tool that utilizes a declarative language for infrastructure specification. This tool is designed to drastically reduce the time spent on manual infrastructure tasks—from days to just minutes—allowing developers to focus more on application development rather than deployment complexities. It targets those comfortable with command-line, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency.
+
+## Project Scope
 
 | Task              | Description                                                                                                 | Tools            |
 | ----------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
