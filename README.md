@@ -293,7 +293,6 @@ Create Image step is optional. It is only required if the default image does not
 
 ```mermaid
 graph LR
-    title Web Request Flow
     A[Browser] --> B[Caddy]
     B --> C[Puma]
     C --> D[PostgreSQL]
