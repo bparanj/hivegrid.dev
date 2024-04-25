@@ -1,8 +1,8 @@
 # HiveGrid
 
-HiveGrid simplifies the deployment of Rails 7 applications by automating the installation, configuration, and provisioning of EC2 instances. HiveGrid is a toolchain for provisioning an EC2 instance to run Rails 7 apps on AWS. 
+HiveGrid is a toolchain that simplifies the deployment of Rails 7 applications on AWS by automating the provisioning and configuration of EC2 instances.
 
-Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists. If you want to read the entertaining version, read the [background story](./sweat.md).
+Read about the [background](https://www.hivegrid.dev/about/) to learn why this project exists or the entertaining [background story](./sweat.md).
 
 ### Project Scope
 
@@ -193,7 +193,7 @@ The EC2 instance, provisioned using Terraform with a custom image, serves as the
 
 ## Testing
 
-The image is tested using Goss. The tests folder contains the tests. SSH into your EC2 instance and run:
+The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
 
 ```bash
 curl http://localhost:8080/healthz | jq .
@@ -287,4 +287,4 @@ graph TD
     G --> H[Capistrano Deploy]
 ```
 
-Create Image step is optional. It is only required if you the default image does not fit your needs.
+Create Image step is optional. It is only required if the default image does not fit your needs.
