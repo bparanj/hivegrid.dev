@@ -6,29 +6,29 @@ Read about the [background](https://www.hivegrid.dev/about/) to learn why this p
 
 ## Purpose
 
-The purpose of this product is to automate the software delivery process by providing a toolchain that leverages Packer, Terraform, Ansible, and cloud provider SDKs. The toolchain simplifies infrastructure management tasks by offering a declarative language, pre-built templates for common use cases and glue code to integrate with cloud providers.
+The purpose is to automate the software delivery process by providing a toolchain that leverages Packer, Terraform, Ansible, and cloud provider SDKs. The toolchain simplifies infrastructure management tasks by offering a declarative language, pre-built templates for common use cases and glue code to integrate with cloud providers.
 
 It targets developers at companies with limited or no DevOps resources, drastically reducing the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in their software delivery workflow.
 
 ## Who is it for?
 
-Our product is tailored for early-stage startups that are still searching for product/market fit. We understand that scalability is not the immediate concern and our modular solution allows startups to iterate quickly based on market feedback.
+HiveGrid is tailored for early-stage startups that are still searching for product/market fit. Scalability is not the immediate concern and modular solution allows startups to iterate quickly based on market feedback.
 
-With our flexible and lightweight toochain, you can rapidly build and deploy features, experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
+With this flexible and lightweight toochain, you can rapidly build and deploy features, experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
 
-By leveraging our modular approach, you can start small, gradually evolve and prioritize features that resonate with users. Whether you're a small team or a solo founder, our product is designed to keep your development process lean, agile and focused on rapid experimentation and learning about your target market.
+By leveraging the modular approach, you can start small, gradually evolve and prioritize features that resonate with users. Whether you're a small team or a solo founder, HiveGrid is designed to keep your development process lean, agile and focused on rapid experimentation and learning about your target market.
 
 ## Modular Design for Simplicity and Flexibility
 
-Our product stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
+HiveGrid stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
 
-Unlike other solutions that may impose opinionated choices or predefined architectures, our product gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
+This does not impose opinionated choices or predefined architectures. HiveGrid gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
 
-With our modular design, you can start with a simple architecture that meets your immediate needs and gradually scale and evolve your architecture organically as your business grows. You don't have to build the most complicated architecture from day one.
+With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows. You don't have to build the most complicated architecture from day one.
 
-Our building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. Our modular components can be combined and customized to create a solution tailored to your needs.
+The building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. The modular components can be combined and customized to create a solution tailored to your needs.
 
-By embracing a modular approach, you can make informed decisions about your architecture, avoid unnecessary complexity, and maintain a lean and agile development process. We believe in providing the tools and flexibility you need to build a system that scales with your business, without the burden of opinionated plugins.
+By embracing a modular approach, you can make informed decisions about your architecture, avoid unnecessary complexity, and maintain a lean and agile development process. We believe in providing the tools and flexibility you need to build a system that scales with your business, without the burden of opinionated built-in product choices such as Grafana.
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
