@@ -10,6 +10,14 @@ The purpose of this product is to automate the software delivery process by prov
 
 It targets developers at companies with limited or no DevOps resources, drastically reducing the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in their software delivery workflow.
 
+## Who is it for?
+
+Our product is tailored for early-stage startups that are still searching for product/market fit. We understand that scalability is not the immediate concern and our modular solution allows startups to iterate quickly based on market feedback.
+
+With our flexible and lightweight toochain, you can rapidly build and deploy features, experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
+
+By leveraging our modular approach, you can start small, gradually evolve and prioritize features that resonate with users. Whether you're a small team or a solo founder, our product is designed to keep your development process lean, agile and focused on rapid experimentation and learning about your target market.
+
 ## Modular Design for Simplicity and Flexibility
 
 Our product stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
