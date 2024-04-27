@@ -10,6 +10,20 @@ The purpose of this product is to automate the software delivery process by prov
 
 It targets developers at companies with limited or no DevOps resources, drastically reducing the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in their software delivery workflow.
 
+## Modular Design for Simplicity and Flexibility
+
+Our product stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
+
+Unlike other solutions that may impose opinionated choices or predefined architectures, our product gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
+
+With our modular design, you can start with a simple architecture that meets your immediate needs and gradually scale and evolve your architecture organically as your business grows. You don't have to build the most complicated architecture from day one.
+
+Our building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. Our modular components can be combined and customized to create a solution tailored to your needs.
+
+By embracing a modular approach, you can make informed decisions about your architecture, avoid unnecessary complexity, and maintain a lean and agile development process. We believe in providing the tools and flexibility you need to build a system that scales with your business, without the burden of opinionated plugins.
+
+Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
+
 ## Project Scope
 
 | Task              | Description                                                                                                 | Tools            |
@@ -305,3 +319,7 @@ graph LR
     B --> C[Puma]
     C --> D[PostgreSQL]
 ```
+
+## Alternatives
+
+There are alternatives like [Zero](https://github.com/commitdev/zero)
