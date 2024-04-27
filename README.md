@@ -14,7 +14,7 @@ It targets developers at companies with limited or no DevOps resources, drastica
 
 HiveGrid is tailored for early-stage startups that are still searching for product/market fit. Scalability is not the immediate concern and modular solution allows startups to iterate quickly based on market feedback.
 
-With this flexible and lightweight toochain, you can rapidly build and deploy features, experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
+With this flexible and lightweight toochain, you can rapidly build, deploy and experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
 
 By leveraging the modular approach, you can start small, gradually evolve and prioritize features that resonate with users. Whether you're a small team or a solo founder, HiveGrid is designed to keep your development process lean, agile and focused on rapid experimentation and learning about your target market.
 
@@ -22,7 +22,7 @@ By leveraging the modular approach, you can start small, gradually evolve and pr
 
 HiveGrid stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
 
-This does not impose opinionated choices or predefined architectures. HiveGrid gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
+This does not impose opinionated choices or predefined architectures. It gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
 
 With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows. You don't have to build the most complicated architecture from day one.
 
