@@ -24,7 +24,9 @@ HiveGrid stands out from the competition by offering a modular design that prior
 
 This does not impose opinionated choices or predefined architectures. It gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
 
-With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows. You don't have to build the most complicated architecture from day one.
+With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows.
+
+You don't need to start with a complex architecture. Complex systems have steep learning curves and can be overwhelming. Beginning with a simpler architecture makes it easier to learn and adapt over time.
 
 The building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. The modular components can be combined and customized to create a solution tailored to your needs.
 
