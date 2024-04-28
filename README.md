@@ -315,8 +315,12 @@ timeline
          : Playbook
     Custom Image : AMI
     Custom Hook : Your Code
+         : Boto3
+         : Playbook    
     Provision Instance : EC2 Instance
     Custom Hook : Your Code
+         : Boto3
+         : Playbook
     Capistrano Deploy : Your App
 ```
 
