@@ -20,17 +20,13 @@ By leveraging the modular approach, you can start small, gradually evolve and pr
 
 ## Modular Toolchain
 
-HiveGrid differs from the competition by offering a modular design that prioritizes simplicity and flexibility. A set of reusable building blocks can be choosen and you can use only what you need for your specific use case. This avoids bloat and keeps your system lean and efficient.
+HiveGrid differs from the competition by offering a modular design that prioritizes simplicity and flexibility. A set of reusable building blocks can be choosen and you can use only what you need for your specific use case. This avoids bloat and keeps your system lean.
 
 It does not impose opinionated choices or predefined architectures. You have the freedom to select the components that fits your requirements. You can avoid over-engineering and unnecessary complexity, especially in the early stages of your startup.
 
-With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows.
-
-You don't need to start with a complex architecture. Complex systems have steep learning curves and can be overwhelming. Beginning with a simpler architecture makes it easier to learn and adapt over time.
+You don't need to start with a complex architecture. Complex systems have steep learning curves and can be overwhelming. With the modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows. Beginning with a simpler architecture makes it easier to learn and adapt over time.
 
 The building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. The modular components can be combined and customized to create a solution tailored to your needs.
-
-Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
 ```mermaid
 graph TD
@@ -49,6 +45,8 @@ graph TD
     C --> D[install_caddy]
   end
 ```
+
+Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
 ## Project Scope
 
