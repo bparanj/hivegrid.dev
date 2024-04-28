@@ -32,6 +32,24 @@ The building blocks are designed to be flexible and adaptable, allowing you to b
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
+```mermaid
+graph TD
+  subgraph StackA[Ruby Stack A]
+    A[deploy_user] --> B[install_ruby]
+    B --> C[postgreSQL]
+    C --> D[install_caddy]
+  end
+```
+
+```mermaid
+graph TD
+  subgraph StackA[Ruby Stack B]
+    A[deploy_user] --> B[install_ruby]
+    B --> C[MySQL]
+    C --> D[install_caddy]
+  end
+```
+
 ## Project Scope
 
 | Task              | Description                                                                                                 | Tools            |
