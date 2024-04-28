@@ -14,23 +14,21 @@ It targets developers at companies with limited or no DevOps resources, drastica
 
 HiveGrid is tailored for early-stage startups that are still searching for product/market fit. Scalability is not the immediate concern and modular solution allows startups to iterate quickly based on market feedback.
 
-With this flexible and lightweight toochain, you can rapidly build, deploy and experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions, and adapt your product as you learn more about your target market.
+With this lightweight toochain, you can rapidly build, deploy and experiment with features without the burden of complex architectures. You can validate ideas, make data-driven decisions and adapt your product as you learn more about your target market.
 
 By leveraging the modular approach, you can start small, gradually evolve and prioritize features that resonate with users. Whether you're a small team or a solo founder, HiveGrid is designed to keep your development process lean, agile and focused on rapid experimentation and learning about your target market.
 
-## Modular Design for Simplicity and Flexibility
+## Modular Toolchain
 
-HiveGrid stands out from the competition by offering a modular design that prioritizes simplicity and flexibility. We provide a set of reusable building blocks that you can choose from, enabling you to use only what you need for your specific use case. This approach helps you avoid bloat and keeps your system lean and efficient.
+HiveGrid differs from the competition by offering a modular design that prioritizes simplicity and flexibility. A set of reusable building blocks can be choosen and you can use only what you need for your specific use case. This avoids bloat and keeps your system lean and efficient.
 
-This does not impose opinionated choices or predefined architectures. It gives you the freedom to select the components that best fit your requirements. We believe in avoiding over-engineering and unnecessary complexity, especially in the early stages of your startup.
+It does not impose opinionated choices or predefined architectures. You have the freedom to select the components that fits your requirements. You can avoid over-engineering and unnecessary complexity, especially in the early stages of your startup.
 
 With our modular design, you can start with a simple architecture that meets your immediate needs and gradually evolve your architecture organically as your business grows.
 
 You don't need to start with a complex architecture. Complex systems have steep learning curves and can be overwhelming. Beginning with a simpler architecture makes it easier to learn and adapt over time.
 
 The building blocks are designed to be flexible and adaptable, allowing you to build a new system from scratch. The modular components can be combined and customized to create a solution tailored to your needs.
-
-By embracing a modular approach, you can make informed decisions about your architecture, avoid unnecessary complexity, and maintain a lean and agile development process. We believe in providing the tools and flexibility you need to build a system that scales with your business, without the burden of opinionated built-in product choices such as Grafana.
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
