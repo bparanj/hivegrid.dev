@@ -6,9 +6,9 @@ Read about the [background](https://www.hivegrid.dev/about/) to learn why this p
 
 ## Purpose
 
-The purpose is to automate the software delivery process by providing a toolchain that leverages Packer, Terraform, Ansible, and cloud provider SDKs. The toolchain simplifies infrastructure management tasks by offering a declarative language, pre-built templates for common use cases and glue code to integrate with cloud providers.
+Automate the software delivery process by using a toolchain that leverages Packer, Terraform, Ansible and cloud provider SDKs. The toolchain simplifies infrastructure management tasks by using a declarative language, pre-built templates for common use cases and glue code to integrate with cloud providers.
 
-It targets developers at companies with limited or no DevOps resources, drastically reducing the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in their software delivery workflow.
+It targets developers at companies with limited or no DevOps resources. It reduces the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in the software delivery workflow.
 
 ## Who is it for?
 
