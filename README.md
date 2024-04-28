@@ -48,6 +48,14 @@ graph TD
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
 
+## Internal Applications
+
+Many companies build web applications for internal use, where scalability is not a concern. In such cases, an EC2 t2.medium instance is sufficient. With HiveGrid, everything can be contained within a single server instance, making it an ideal solution for this scenario.
+
+When building internal web applications, there is typically no need for advanced features like load balancers, zero-downtime deployments, staging environments or other complex setups. HiveGrid provides a simpler approach, allowing companies to focus on developing their application without the overhead of unnecessary infrastructure complexities.
+
+By leveraging HiveGrid, companies can quickly deploy and manage their internal web applications on a single EC2 instance, simplifying the development and deployment process while keeping costs down.
+
 ## Project Scope
 
 | Task              | Description                                                                                                 | Tools            |
@@ -298,7 +306,7 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 
 HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-## Hooks
+## Lifecyle Hooks
 
 ```mermaid
 timeline
