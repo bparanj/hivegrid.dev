@@ -1,0 +1,20 @@
+- name: Setup a cron job to print the timestamp every midnight
+  hosts: all
+  become: yes # Use sudo to manage cron jobs
+  tasks:
+    - name: Ensure cron is installed (Ubuntu)
+      ansible.builtin.apt:
+        name: cron
+        state: present
+
+    - name: Schedule cron job to print the timestamp at midnight
+      ansible.builtin.cron:
+        name: "Print timestamp"
+        job: "date \"+\\%F \\%T\" >> /var/log/timestamp.log"
+        minute: "0"
+        hour: "0"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        user: root
+        state: present
