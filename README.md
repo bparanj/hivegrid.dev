@@ -300,6 +300,20 @@ HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT
 
 ## Hooks
 
+```mermaid
+timeline
+    title Software Delivery Lifecycle
+    Base Image : Ubuntu
+    Custom Hook : Your Code
+         : Boto3
+         : Playbook
+    Custom Image : AMI
+    Custom Hook : Your Code
+    Provision Instance : EC2 Instance
+    Custom Hook : Your Code
+    Capistrano Deploy : Your App
+```
+
 You can customize the process in any of the following phases:
 
 1. Base Image
