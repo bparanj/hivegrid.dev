@@ -165,6 +165,22 @@ The PEM file used for SSH access to your EC2 instance, is stored in AWS Secrets 
 Database Backups:
 AWS S3 is used for storing database backups.
 
+### Clone the Project
+
+Clone this project. 
+
+```bash
+git clone git@github.com:bparanj/hivegrid.dev.git
+```
+
+### Provision the Server 
+
+From the root of the project, run the Terraform template:
+
+```bash
+terraform apply terraform/main.tf
+```
+
 ### Download PEM File
 
 You must have nodejs installed on your laptop. To install dependencies, go to javascript folder directory and run:
@@ -187,20 +203,6 @@ To download the PEM file, run:
 
 ```bash
 node keyDownload.js
-```
-
-### Steps
-
-Clone this project. 
-
-```bash
-git clone git@github.com:bparanj/hivegrid.dev.git
-```
-
-From the root of the project, run the Terraform template:
-
-```bash
-terraform apply terraform/main.tf
 ```
 
 ## Where to Get Help
