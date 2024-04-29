@@ -80,6 +80,15 @@ To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 - Enables easy scalability, configuration, and cross-environment deployment
 - Facilitates version control, collaboration and rollbacks
 
+## Anti-Features
+
+Does not require:
+
+- Docker
+- load balancer
+- Cloudflare
+- Traefik
+
 ## Packer Image
 
 ```mermaid
@@ -373,4 +382,10 @@ graph LR
 
 ## Alternatives
 
-There are alternatives like [Zero](https://github.com/commitdev/zero)
+- [Zero](https://github.com/commitdev/zero)
+
+## Endorsements
+
+> Your endorsement with name can go here.
+
+Take it for a spin and if you like it, send me your endorsement.
