@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+
+  vars:
+    postgresql_backup_dir: "/var/backups/postgres"
+    postgresql_backup_database: "{{ db_name }}"
+    postgresql_backup_username: "{{ db_user }}"
+    postgresql_backup_password: "{{ db_password }}"
+
+  roles:
+    - ome.postgresql_backup
