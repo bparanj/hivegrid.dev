@@ -30,20 +30,28 @@ The building blocks are designed to be flexible and adaptable, allowing you to b
 
 ```mermaid
 graph TD
-  subgraph StackA[Ruby Stack A]
+
+subgraph StackA[Ruby Stack A]
     A[deploy_user] --> B[install_ruby]
     B --> C[postgreSQL]
     C --> D[install_caddy]
-  end
+    
+    style StackA fill:#1f3864,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
+end
 ```
 
 ```mermaid
 graph TD
-  subgraph StackA[Ruby Stack B]
+
+subgraph StackB[Ruby Stack B]
     A[deploy_user] --> B[install_ruby]
     B --> C[MySQL]
     C --> D[install_caddy]
-  end
+    
+    style StackB fill:#8C2DB2,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
+end
 ```
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
@@ -81,6 +89,10 @@ graph LR
     G --> E
     
     B -- Ansible Provisioner --> B
+
+    style B fill:#1f77b4,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#2ca02c,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#ff7f0e,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
@@ -108,6 +120,9 @@ graph LR
     A[Base Image] --> B(Packer)
     B --> C(Ansible)
     C --> D[Custom Image]
+    
+    style B fill:#1F77B4,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#EE0000,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 * **Base Image:**  This is your starting point. It is a generic operating system image (e.g., Ubuntu, CentOS).
@@ -160,6 +175,8 @@ The custom image created in the previous step is the input to Terraform and the 
 graph LR
     A[Custom Image] --> B(Terraform)
     B --> C[EC2 Instance]
+    
+    style B fill:#1F77B4,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 1. The custom image, which was created using Packer and Ansible, serves as an input to Terraform.
@@ -256,6 +273,11 @@ You can use Capistrano to deploy your Rails 7.1 app to the provisioned server. W
 graph LR
     A[Code] --> B(Capistrano)
     B -- Deploy --> C[EC2 Instance]
+    
+    style B fill:#1C1B39,stroke:#333,stroke-width:2px,color:#fff
+    style C stroke:#333,stroke-width:2px
+    
+    class C server
 ```
 
 The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
@@ -282,11 +304,15 @@ Each stack has its own image and provisioning template, illustrating the separat
 
 ```mermaid
 graph LR
-  subgraph Rails Stack
+  %% Define style for Rails Stack
+  style RailsStack fill:#cc0000,stroke:#333,stroke-width:2px
+  subgraph RailsStack
     RailsImage[Rails Stack Image] --> RailsTemplate[Rails Provisioning Template]
   end
 
-  subgraph Django Stack
+  %% Define style for Django Stack
+  style DjangoStack fill:#092E20,stroke:#333,stroke-width:2px
+  subgraph DjangoStack
     DjangoImage[Django Stack Image] --> DjangoTemplate[Django Provisioning Template]
   end
 ```
