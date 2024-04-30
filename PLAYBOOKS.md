@@ -5,6 +5,8 @@
 - Create deploy user
 - Ensure deploy user has passwordless sudo
 - Set file permissions for the sudoers file for deploy
+- Setup application deployment directories
+- Create authorized_keys file for deploy user
 
 ## Fail2ban
 
@@ -57,7 +59,7 @@ destemail = your-email@your-domain.com
 - Create Redis systemd service file
 - Reload systemd to apply new service file and restart Redis service
 - Ensure Redis service is enabled and started
-- Disable specific Redis commands
+- Disable specific Redis commands for security
 
 ## Timezone
 

@@ -111,13 +111,13 @@ The custom AMI created by Packer provides:
 
 | Name         | Version                                                                                  |
 | ------------ | ---------------------------------------------------------------------------------------- |
-| Ruby         | 3.3.0                                                                                    |
+| Ruby         | 3.3.1                                                                                    |
 | RubyGem      | 2.3.6                                                                                    |
 | Caddy        | 2.7.6                                                                                    |
 | PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
 | Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
 | Git          | git version 2.34.1                                                                       |
-| Goss         | 0.4.4                                                                                    |
+| Goss         | 0.4.6                                                                                    |
 
 See [versions](./VERSIONS.md) for more details.
 
@@ -220,10 +220,6 @@ To download the PEM file, run:
 node keyDownload.js
 ```
 
-## Where to Get Help
-
-Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
-
 ## Ansible Playbooks
 
 Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
@@ -283,36 +279,6 @@ graph LR
   end
 ```
 
-## Contributing
-
-Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
-
-- Ansible playbooks for other SQL and NoSQL database servers
-- Support other Linux flavors like RHEL, Debian etc.
-- Packer and Terraform template for other cloud providers like:
-
-| #    | Provider        |
-|------|-----------------|
-| 1    | Microsoft Azure |
-| 2    | Google Cloud    |
-| 3    | Digital Ocean   |
-| 4    | Linode          |
-
-- Add support for other full stack MVC frameworks like: 
-
-| #    | Framework        | Language     | 
-|------|------------------|--------------|
-| 1    | Django           | Python       |
-| 2    | Laravel          | PHP          |
-| 3    | ASP.NET Core MVC | C#           |
-| 4    | Spring Boot      | Java         |
-| 5    | Phoenix          | Elixir       |
-| 6    | Play Framework   | Java/Scala   |
-
-## License
-
-HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
-
 ## Lifecyle Hooks
 
 ```mermaid
@@ -343,7 +309,7 @@ You can customize the process in any of the following phases:
 6. Your Custom Hook
 7. Capistrano Deploy
 
-Your custom hooks can be cloud-init, code written using Ruby, Python, Java or any other SDK for AWS.
+Your custom hooks can be cloud-init script, ansible playbook, code written using Ruby, Python, Java or any other SDK for AWS.
 
 ## Getting Started Guide
 
@@ -383,6 +349,40 @@ graph LR
 ## Alternatives
 
 - [Zero](https://github.com/commitdev/zero)
+
+## License
+
+HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Where to Get Help
+
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
+
+## Contributing
+
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
+
+- Ansible playbooks for other SQL and NoSQL database servers
+- Support other Linux flavors like RHEL, Debian etc.
+- Packer and Terraform template for other cloud providers like:
+
+| #    | Provider        |
+|------|-----------------|
+| 1    | Microsoft Azure |
+| 2    | Google Cloud    |
+| 3    | Digital Ocean   |
+| 4    | Linode          |
+
+- Add support for other full stack MVC frameworks like: 
+
+| #    | Framework        | Language     | 
+|------|------------------|--------------|
+| 1    | Django           | Python       |
+| 2    | Laravel          | PHP          |
+| 3    | ASP.NET Core MVC | C#           |
+| 4    | Spring Boot      | Java         |
+| 5    | Phoenix          | Elixir       |
+| 6    | Play Framework   | Java/Scala   |
 
 ## Endorsements
 

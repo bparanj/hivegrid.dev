@@ -59,9 +59,9 @@ is 1.7.4. You can update by downloading from https://www.terraform.io/downloads.
 | Name         | Version                                                                                  |
 | ------------ | ---------------------------------------------------------------------------------------- |
 | ruby-install | 0.9.3                                                                                    |
-| Ruby         | 3.3.0                                                                                    |
+| Ruby         | 3.3.1                                                                                    |
 | Gem          | 2.3.6                                                                                    |
-| Goss         | 0.4.4                                                                                    |
+| Goss         | 0.4.6                                                                                    |
 | Caddy        | 2.7.6                                                                                    |
 | PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
 | Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
@@ -74,7 +74,7 @@ is 1.7.4. You can update by downloading from https://www.terraform.io/downloads.
 See the playbooks/goss.yml:
 
 ```
-v0.4.4
+v0.4.6
 ```
 
 ## Base Image
