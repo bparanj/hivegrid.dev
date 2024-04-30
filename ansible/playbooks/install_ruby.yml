@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars:
-    ruby_version: "3.3.0"  # This can be changed to any specific Ruby version you need.
+    ruby_version: "3.3.1"  # This can be changed to any specific Ruby version you need.
 
   tasks:
     - name: Install dependencies for ruby-install

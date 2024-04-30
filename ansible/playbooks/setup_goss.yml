@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    goss_version: "v0.4.4"
+    goss_version: "v0.4.6"
     goss_install_path: "/usr/local/bin/goss"
     goss_test_directory: "/etc/goss"
     goss_listen_addr: ":8080"
