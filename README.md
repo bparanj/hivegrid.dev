@@ -49,7 +49,7 @@ subgraph StackB[Ruby Stack B]
     B --> C[MySQL]
     C --> D[install_caddy]
     
-    style StackB fill:#8C2DB2,stroke:#333,stroke-width:2px,color:#fff
+    style StackB fill:#1f3864,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
 end
 ```
