@@ -67,9 +67,21 @@ By leveraging HiveGrid, companies can quickly deploy and manage their internal w
 
 These tools have clear separation of responsibilities, making it easier to extend and customize the functionality according to our needs.
 
-## Choice of Tools
+## Workflow
 
 We've knitted together Ansible, Packer, and Terraform to whip up servers on AWS like it's nobody's business. Ansible cuts through the configuration chaos, letting us cherry-pick cloud services, slap on software, and select our web framework with a declarative flair. Packer is our Swiss Army knife, slicing across cloud platforms to provision servers without breaking a sweat. And Terraform? It’s the smart cookie that keeps our code lean and mean, thanks to its idempotent magic. Meshing these tools together, we've streamlined our AWS server setup, keeping our workflow slick, adaptable, and blazing fast.
+
+```mermaid
+graph LR
+    A[Base Image] --> B[Packer]
+    B --> C[Custom Image]
+    C --> D[Terraform]
+    D --> E[EC2 Instance]
+    F[Code Repository] --> G[Capistrano]
+    G --> E
+    
+    B -- Ansible Provisioner --> B
+```
 
 To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 
