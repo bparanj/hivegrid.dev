@@ -109,7 +109,7 @@ To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 Does not require:
 
 - Docker
-- load balancer
+- Load balancer
 - Cloudflare
 - Traefik
 
@@ -258,7 +258,7 @@ Packer uses Ansible as the provisioner. The Ansible playbooks are included in th
 - Setup deploy user
 - Harden SSH Configuration
 - Install and Configure Caddy Server
-- Install Ruby 3.3.0
+- Install Ruby 3.3.1
 - Install PostgreSQL 16
 - Install and Setup Redis
 - Set server timezone to UTC
