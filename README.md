@@ -111,13 +111,13 @@ The custom AMI created by Packer provides:
 
 | Name         | Version                                                                                  |
 | ------------ | ---------------------------------------------------------------------------------------- |
-| Ruby         | 3.3.0                                                                                    |
+| Ruby         | 3.3.1                                                                                    |
 | RubyGem      | 2.3.6                                                                                    |
 | Caddy        | 2.7.6                                                                                    |
 | PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
 | Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
 | Git          | git version 2.34.1                                                                       |
-| Goss         | 0.4.4                                                                                    |
+| Goss         | 0.4.6                                                                                    |
 
 See [versions](./VERSIONS.md) for more details.
 
@@ -291,12 +291,14 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 - Support other Linux flavors like RHEL, Debian etc.
 - Packer and Terraform template for other cloud providers like:
 
-| #    | Provider        |
-|------|-----------------|
-| 1    | Microsoft Azure |
-| 2    | Google Cloud    |
-| 3    | Digital Ocean   |
-| 4    | Linode          |
+| #    | Provider        | Packer Builder           |
+|------|-----------------|--------------------------|
+| 1    | Microsoft Azure | Azure ARM Builder        |
+| 2    | Google Cloud    | Google Compute Builder   |
+| 3    | Digital Ocean   | DigitalOcean Builder     |
+| 4    | Linode          | Linode Builder           |
+| 5    | Rackspace       | OpenStack Builder        |
+
 
 - Add support for other full stack MVC frameworks like: 
 
