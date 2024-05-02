@@ -10,7 +10,7 @@ Automate the software delivery process by using a toolchain that leverages Packe
 
 It targets developers at companies with limited or no DevOps resources. It reduces the time spent on manual infrastructure tasks from days to minutes. Developers can focus more on application development rather than infrastructure complexities. It is designed for those comfortable with the command-line interface, offering customizable templates for each phase of software delivery to streamline processes and enhance efficiency in the software delivery workflow.
 
-## Who is it for?
+## For Whom
 
 HiveGrid is tailored for early-stage startups that are still searching for product/market fit. Scalability is not the immediate concern and modular solution allows startups to iterate quickly based on market feedback.
 
@@ -67,7 +67,7 @@ By leveraging HiveGrid, companies can quickly deploy and manage their internal w
 
 These tools have clear separation of responsibilities, making it easier to extend and customize the functionality according to our needs.
 
-## Choice of Tools
+## Tooling
 
 We've knitted together Ansible, Packer, and Terraform to whip up servers on AWS like it's nobody's business. Ansible cuts through the configuration chaos, letting us cherry-pick cloud services, slap on software, and select our web framework with a declarative flair. Packer is our Swiss Army knife, slicing across cloud platforms to provision servers without breaking a sweat. And Terraform? It’s the smart cookie that keeps our code lean and mean, thanks to its idempotent magic. Meshing these tools together, we've streamlined our AWS server setup, keeping our workflow slick, adaptable, and blazing fast.
 
@@ -164,14 +164,60 @@ The Terraform template defines the following configuration:
 - Instance Type: t2.medium
 - Region: us-west-2
 
-See [main.tf](./terraform/main.tf) for more details. You can change it in terraform/variables.tf.
+See [main.tf](./terraform/main.tf) for more details. You can change it in [variables.tf](.terraform/variables.tf).
+
+## Ansible Playbooks
+
+Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
+
+- Install required packages on Ubuntu 22.04
+- Install and configure Fail2ban
+- Setup deploy user
+- Harden SSH Configuration
+- Install and Configure Caddy Server
+- Install Ruby 3.3.0
+- Install PostgreSQL 16
+- Install and Setup Redis
+- Set server timezone to UTC
+
+See [playbooks](./PLAYBOOKS.md) for more details.
+
+## Testing
+
+The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
+
+```bash
+curl http://localhost:8080/healthz | jq .
+```
+
+### Goss Test Setup
+
+For adding tests:
+
+- Review the Packer and Terraform template
+- Manually `run goss autoadd` on the server
+- Copy the generated file on the server to tests/goss.yaml file in the project
+
+## Image Catalog and Provisioning Template
+
+Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
+
+```mermaid
+graph LR
+  subgraph Rails Stack
+    RailsImage[Rails Stack Image] --> RailsTemplate[Rails Provisioning Template]
+  end
+
+  subgraph Django Stack
+    DjangoImage[Django Stack Image] --> DjangoTemplate[Django Provisioning Template]
+  end
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-An AWS account
-[![An AWS account](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
+- An AWS account
 - An IAM user with appropriate policies for EC2, S3, and AWS Secrets Manager
 - Packer and Terraform installed and configured
 
@@ -224,97 +270,6 @@ node keyDownload.js
 
 Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
 
-## Ansible Playbooks
-
-Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
-
-- Install required packages on Ubuntu 22.04
-- Install and configure Fail2ban
-- Setup deploy user
-- Harden SSH Configuration
-- Install and Configure Caddy Server
-- Install Ruby 3.3.0
-- Install PostgreSQL 16
-- Install and Setup Redis
-- Set server timezone to UTC
-
-See [playbooks](./PLAYBOOKS.md) for more details.
-
-## Deploying Rails App
-
-You can use Capistrano to deploy your Rails 7.1 app to the provisioned server. We will be using `dotenv` gem to manage environment variables on the production server.
-
-```mermaid
-graph LR
-    A[Code] --> B(Capistrano)
-    B -- Deploy --> C[EC2 Instance]
-```
-
-The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
-
-## Testing
-
-The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
-
-```bash
-curl http://localhost:8080/healthz | jq .
-```
-
-### Goss Test Setup
-
-For adding tests:
-
-- Review the Packer and Terraform template
-- Manually `run goss autoadd` on the server
-- Copy the generated file on the server to tests/goss.yaml file in the project
-
-## Image Catalog and Provisioning Template
-
-Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
-
-```mermaid
-graph LR
-  subgraph Rails Stack
-    RailsImage[Rails Stack Image] --> RailsTemplate[Rails Provisioning Template]
-  end
-
-  subgraph Django Stack
-    DjangoImage[Django Stack Image] --> DjangoTemplate[Django Provisioning Template]
-  end
-```
-
-## Contributing
-
-Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
-
-- Ansible playbooks for other SQL and NoSQL database servers
-- Support other Linux flavors like RHEL, Debian etc.
-- Packer and Terraform template for other cloud providers like:
-
-| #    | Provider        | Packer Builder           |
-|------|-----------------|--------------------------|
-| 1    | Microsoft Azure | Azure ARM Builder        |
-| 2    | Google Cloud    | Google Compute Builder   |
-| 3    | Digital Ocean   | DigitalOcean Builder     |
-| 4    | Linode          | Linode Builder           |
-| 5    | Rackspace       | OpenStack Builder        |
-
-
-- Add support for other full stack MVC frameworks like: 
-
-| #    | Framework        | Language     | 
-|------|------------------|--------------|
-| 1    | Django           | Python       |
-| 2    | Laravel          | PHP          |
-| 3    | ASP.NET Core MVC | C#           |
-| 4    | Spring Boot      | Java         |
-| 5    | Phoenix          | Elixir       |
-| 6    | Play Framework   | Java/Scala   |
-
-## License
-
-HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
-
 ## Lifecyle Hooks
 
 ```mermaid
@@ -347,13 +302,17 @@ You can customize the process in any of the following phases:
 
 Your custom hooks can be cloud-init, code written using Ruby, Python, Java or any other SDK for AWS.
 
-## Getting Started Guide
+## Deploying Rails App
 
-### Create a AWS Account
+You can use Capistrano to deploy your Rails 7.1 app to the provisioned server. We will be using `dotenv` gem to manage environment variables on the production server.
 
-[![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
+```mermaid
+graph LR
+    A[Code] --> B(Capistrano)
+    B -- Deploy --> C[EC2 Instance]
+```
 
-More videos to walk you through each step is coming soon.
+The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
 
 ## Process at a High Level
 
@@ -381,6 +340,48 @@ graph LR
     B --> C[Puma]
     C --> D[PostgreSQL]
 ```
+
+Caddy is configured as the reverse proxy to Puma process.
+
+## Getting Started Guide
+
+### Create a AWS Account
+
+[![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
+
+More videos to walk you through each step is coming soon.
+
+## Contributing
+
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
+
+- Ansible playbooks for other SQL and NoSQL database servers
+- Support other Linux flavors like RHEL, Debian etc.
+- Packer and Terraform template for other cloud providers like:
+
+| #    | Provider        | Packer Builder    |
+|------|-----------------|-------------------|
+| 1    | Microsoft Azure | Azure ARM         |
+| 2    | Google Cloud    | Google Compute    |
+| 3    | Digital Ocean   | DigitalOcean      |
+| 4    | Linode          | Linode            |
+| 5    | Rackspace       | OpenStack         |
+
+
+- Add support for other full stack MVC frameworks like: 
+
+| #    | Framework        | Language     | 
+|------|------------------|--------------|
+| 1    | Django           | Python       |
+| 2    | Laravel          | PHP          |
+| 3    | ASP.NET Core MVC | C#           |
+| 4    | Spring Boot      | Java         |
+| 5    | Phoenix          | Elixir       |
+| 6    | Play Framework   | Java/Scala   |
+
+## License
+
+HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Alternatives
 
