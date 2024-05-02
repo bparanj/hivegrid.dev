@@ -109,15 +109,15 @@ graph LR
 
 The custom AMI created by Packer provides:
 
-| Name         | Version                                                                                  |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| Ruby         | 3.3.1                                                                                    |
-| RubyGem      | 2.3.6                                                                                    |
-| Caddy        | 2.7.6                                                                                    |
-| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1)                                       |
-| Redis        | Redis server v=7.2.4 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=4a33ab3ec422ece7 |
-| Git          | git version 2.34.1                                                                       |
-| Goss         | 0.4.6                                                                                    |
+| Name         | Version                                            | Release Date   |
+| ------------ | ------------------------------------------------------------------- |
+| Ruby         | 3.3.1                                              |                |
+| RubyGem      | 2.3.6                                              |                |
+| Caddy        | 2.7.6                                              |                |
+| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1) |                |
+| Redis        | Redis server v=7.2.4                               |                |
+| Git          | git version 2.34.1                                 |                |
+| Goss         | 0.4.6                                              |                |
 
 See [versions](./VERSIONS.md) for more details.
 
