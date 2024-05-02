@@ -182,6 +182,12 @@ Packer uses Ansible as the provisioner. The Ansible playbooks are included in th
 
 See [playbooks](./PLAYBOOKS.md) for more details.
 
+You can:
+
+- Create a new playbook and include it in the master playbook.
+- Modify existing playbook included in the master playbook.
+- Remove existing playbook from the master playbook.
+
 ## Testing
 
 The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
