@@ -217,6 +217,14 @@ You can:
 - Modify existing playbook included in the master playbook.
 - Remove existing playbook from the master playbook.
 
+Update the email for fail2ban notification emails:
+
+```bash
+ansible-playbook update_fail2ban_email.yml -e "destemail=your-email@your-domain.com"
+```
+
+See update_fail2ban_email.md in iac/ansible folder. [PENDING]
+
 ## Testing
 
 The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
