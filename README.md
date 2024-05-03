@@ -30,20 +30,28 @@ The building blocks are designed to be flexible and adaptable, allowing you to b
 
 ```mermaid
 graph TD
-  subgraph StackA[Ruby Stack A]
+
+subgraph StackA[Ruby Stack A]
     A[deploy_user] --> B[install_ruby]
     B --> C[postgreSQL]
     C --> D[install_caddy]
-  end
+    
+    style StackA fill:#1f3864,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
+end
 ```
 
 ```mermaid
 graph TD
-  subgraph StackA[Ruby Stack B]
+
+subgraph StackB[Ruby Stack B]
     A[deploy_user] --> B[install_ruby]
     B --> C[MySQL]
     C --> D[install_caddy]
-  end
+    
+    style StackB fill:#1f3864,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#00758F,stroke:#333,stroke-width:2px,color:#fff
+end
 ```
 
 Choose simplicity, flexibility and modularity and stay focused on what matters most — building a successful product.
@@ -71,6 +79,22 @@ These tools have clear separation of responsibilities, making it easier to exten
 
 We've knitted together Ansible, Packer, and Terraform to whip up servers on AWS like it's nobody's business. Ansible cuts through the configuration chaos, letting us cherry-pick cloud services, slap on software, and select our web framework with a declarative flair. Packer is our Swiss Army knife, slicing across cloud platforms to provision servers without breaking a sweat. And Terraform? It’s the smart cookie that keeps our code lean and mean, thanks to its idempotent magic. Meshing these tools together, we've streamlined our AWS server setup, keeping our workflow slick, adaptable, and blazing fast.
 
+```mermaid
+graph LR
+    A[Base Image] --> B[Packer]
+    B --> C[Custom Image]
+    C --> D[Terraform]
+    D --> E[EC2 Instance]
+    F[Code Repository] --> G[Capistrano]
+    G --> E
+    
+    B -- Ansible Provisioner --> B
+
+    style B fill:#1f77b4,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#2ca02c,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#ff7f0e,stroke:#333,stroke-width:2px,color:#fff
+```
+
 To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 
 ### Advantages of the Toolchain
@@ -85,7 +109,7 @@ To learn more, read [Toolchain](https://hivegrid.dev/articles/toolchain)
 Does not require:
 
 - Docker
-- load balancer
+- Load balancer
 - Cloudflare
 - Traefik
 
@@ -96,6 +120,9 @@ graph LR
     A[Base Image] --> B(Packer)
     B --> C(Ansible)
     C --> D[Custom Image]
+    
+    style B fill:#1F77B4,stroke:#333,stroke-width:2px,color:#fff
+    style C fill:#EE0000,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 * **Base Image:**  This is your starting point. It is a generic operating system image (e.g., Ubuntu, CentOS).
@@ -111,13 +138,13 @@ The custom AMI created by Packer provides:
 
 | Name         | Version                                            | Release Date   |
 | ------------ | ------------------------------------------------------------------- |
-| Ruby         | 3.3.1                                              |                |
+| Ruby         | 3.3.1                                              | April 23, 2024 |
 | RubyGem      | 2.3.6                                              |                |
-| Caddy        | 2.7.6                                              |                |
-| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1) |                |
-| Redis        | Redis server v=7.2.4                               |                |
-| Git          | git version 2.34.1                                 |                |
-| Goss         | 0.4.6                                              |                |
+| Caddy        | 2.7.6                                              | Dec 7, 2023    |
+| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1) | Feb 8, 2024    |
+| Redis        | Redis server v=7.2.4                               | Jan 9, 2024    |
+| Git          | git version 2.45.0                                 | April 29, 2024 |
+| Goss         | 0.4.6                                              | March 24, 2024 |
 
 See [versions](./VERSIONS.md) for more details.
 
@@ -148,6 +175,8 @@ The custom image created in the previous step is the input to Terraform and the 
 graph LR
     A[Custom Image] --> B(Terraform)
     B --> C[EC2 Instance]
+    
+    style B fill:#1F77B4,stroke:#333,stroke-width:2px,color:#fff
 ```
 
 1. The custom image, which was created using Packer and Ansible, serves as an input to Terraform.
@@ -276,6 +305,22 @@ node keyDownload.js
 
 Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
 
+## Ansible Playbooks
+
+Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
+
+- Install required packages on Ubuntu 22.04
+- Install and configure Fail2ban
+- Setup deploy user
+- Harden SSH Configuration
+- Install and Configure Caddy Server
+- Install Ruby 3.3.1
+- Install PostgreSQL 16
+- Install and Setup Redis
+- Set server timezone to UTC
+
+See [playbooks](./PLAYBOOKS.md) for more details.
+
 ## Lifecyle Hooks
 
 ```mermaid
@@ -306,7 +351,7 @@ You can customize the process in any of the following phases:
 6. Your Custom Hook
 7. Capistrano Deploy
 
-Your custom hooks can be cloud-init, code written using Ruby, Python, Java or any other SDK for AWS.
+Your custom hooks can be cloud-init script, ansible playbook, code written using Ruby, Python, Java or any other SDK for AWS.
 
 ## Deploying Rails App
 
@@ -316,6 +361,11 @@ You can use Capistrano to deploy your Rails 7.1 app to the provisioned server. W
 graph LR
     A[Code] --> B(Capistrano)
     B -- Deploy --> C[EC2 Instance]
+    
+    style B fill:#1C1B39,stroke:#333,stroke-width:2px,color:#fff
+    style C stroke:#333,stroke-width:2px
+    
+    class C server
 ```
 
 The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
@@ -357,6 +407,22 @@ Caddy is configured as the reverse proxy to Puma process.
 
 More videos to walk you through each step is coming soon.
 
+## License
+
+HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Alternatives
+
+- [Zero](https://github.com/commitdev/zero)
+
+## License
+
+HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Where to Get Help
+
+Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
+
 ## Contributing
 
 Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to start contributing to this project. Ways to contribute:
@@ -385,13 +451,6 @@ Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to s
 | 5    | Phoenix          | Elixir       |
 | 6    | Play Framework   | Java/Scala   |
 
-## License
-
-HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
-
-## Alternatives
-
-- [Zero](https://github.com/commitdev/zero)
 
 ## Endorsements
 
