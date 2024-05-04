@@ -139,7 +139,7 @@ The custom AMI created by Packer provides:
 | Name         | Version                                            | Release Date   |
 | ------------ | -------------------------------------------------- | -------------- |
 | Ruby         | 3.3.1                                              | April 23, 2024 |
-| RubyGem      | 2.3.6                                              |                |
+| RubyGem      | 3.5.10                                             | May 3, 2024    |
 | Caddy        | 2.7.6                                              | Dec 7, 2023    |
 | PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1) | Feb 8, 2024    |
 | Redis        | Redis server v=7.2.4                               | Jan 9, 2024    |
@@ -247,11 +247,15 @@ Each stack has its own image and provisioning template, illustrating the separat
 
 ```mermaid
 graph LR
-  subgraph Rails Stack
+  %% Define style for Rails Stack
+  style RailsStack fill:#cc0000,stroke:#333,stroke-width:2px
+  subgraph RailsStack
     RailsImage[Rails Stack Image] --> RailsTemplate[Rails Provisioning Template]
   end
 
-  subgraph Django Stack
+  %% Define style for Django Stack
+  style DjangoStack fill:#092E20,stroke:#333,stroke-width:2px
+  subgraph DjangoStack
     DjangoImage[Django Stack Image] --> DjangoTemplate[Django Provisioning Template]
   end
 ```
@@ -422,10 +426,6 @@ HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT
 ## Alternatives
 
 - [Zero](https://github.com/commitdev/zero)
-
-## License
-
-HiveGrid is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Where to Get Help
 
