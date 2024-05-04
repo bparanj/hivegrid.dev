@@ -375,7 +375,8 @@ graph TD
     F --> G[Run SSL playbook]
     G --> H[Run Puma playbook]
     H --> I[Change DB Password]
-    I --> J[Capistrano Deploy]
+    I --> J[Change Fail2Ban Email]
+    J --> K[Capistrano Deploy]
 ```
 
 Create Image step is optional. It is only required if the default image does not fit your needs.
