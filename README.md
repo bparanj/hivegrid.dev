@@ -241,7 +241,7 @@ For adding tests:
 - Manually `run goss autoadd` on the server
 - Copy the generated file on the server to tests/goss.yaml file in the project
 
-## Image Catalog and Provisioning Template
+## Image and Provisioning Template Catalog
 
 Each stack has its own image and provisioning template, illustrating the separation between the different stacks.
 
