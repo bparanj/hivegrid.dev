@@ -313,26 +313,6 @@ To download the PEM file, run:
 node keyDownload.js
 ```
 
-## Where to Get Help
-
-Join the [discussions](https://github.com/bparanj/hivegrid.dev/discussions) to get help.
-
-## Ansible Playbooks
-
-Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
-
-- Install required packages on Ubuntu 22.04
-- Install and configure Fail2ban
-- Setup deploy user
-- Harden SSH Configuration
-- Install and Configure Caddy Server
-- Install Ruby 3.3.1
-- Install PostgreSQL 16
-- Install and Setup Redis
-- Set server timezone to UTC
-
-See [playbooks](./PLAYBOOKS.md) for more details.
-
 ## Lifecyle Hooks
 
 ```mermaid
