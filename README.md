@@ -260,6 +260,17 @@ graph LR
   end
 ```
 
+## Benefits
+
+1. **Ease of Use**: Simplifies server setup through a few terminal commands.
+2. **Automation**: Prevents errors by automating manual tasks and making the process reproducible.
+3. **Cost-Effective**: It's free, helping early-stage companies save money.
+4. **Basic Security**: Provides basic security features for applications.
+5. **Customization**: Allows users to customize their stack by installing preferred software.
+6. **Speed**: Offers prebuilt images and tested playbooks to accelerate the process to go live.
+7. **Zero Dependency**: Does not require modifications to the application codebase or dependencies.
+8. **Technical Support**: Provides quick, personalized support within 24 hours on weekdays.
+
 ## Getting Started
 
 ### Prerequisites
