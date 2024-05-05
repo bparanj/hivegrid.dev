@@ -113,6 +113,19 @@ Does not require:
 - Cloudflare
 - Traefik
 
+## Requirements
+
+### Development - Control Node
+
+| Name      | Version     |
+| --------- | ----------- |
+| Python    | 3.12.1      |
+| Ansible   | core 2.16.1 |
+| Packer    | 1.10.1      |
+| Terraform | 1.6.6       |
+| Node      | v21.6.2     |
+| npm       | 10.5.0      |
+
 ## Packer Image
 
 ```mermaid
