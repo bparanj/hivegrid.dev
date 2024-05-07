@@ -149,15 +149,15 @@ graph LR
 
 The custom AMI created by Packer provides:
 
-| Name         | Version                                            | Release Date   |
-| ------------ | -------------------------------------------------- | -------------- |
-| Ruby         | 3.3.1                                              | April 23, 2024 |
-| RubyGem      | 3.5.10                                             | May 3, 2024    |
-| Caddy        | 2.7.6                                              | Dec 7, 2023    |
-| PostgreSQL   | psql (PostgreSQL) 16.2 (Ubuntu 16.2-1.pgdg22.04+1) | Feb 8, 2024    |
-| Redis        | Redis server v=7.2.4                               | Jan 9, 2024    |
-| Git          | git version 2.45.0                                 | April 29, 2024 |
-| Goss         | 0.4.6                                              | March 24, 2024 |
+| Name         | Version                          | Release Date   |
+| ------------ | -------------------------------- | -------------- |
+| Ruby         | 3.3.1                            | April 23, 2024 |
+| RubyGem      | 3.5.10                           | May 3, 2024    |
+| Caddy        | 2.7.6                            | Dec 7, 2023    |
+| PostgreSQL   | 16.2 (Ubuntu 16.2-1.pgdg22.04+1) | Feb 8, 2024    |
+| Redis        | 7.2.4                            | Jan 9, 2024    |
+| Git          | 2.45.0                           | April 29, 2024 |
+| Goss         | 0.4.6                            | March 24, 2024 |
 
 See [versions](./VERSIONS.md) for more details.
 
@@ -217,7 +217,7 @@ Packer uses Ansible as the provisioner. The Ansible playbooks are included in th
 - Setup deploy user
 - Harden SSH Configuration
 - Install and Configure Caddy Server
-- Install Ruby 3.3.0
+- Install Ruby 3.3.1
 - Install PostgreSQL 16
 - Install and Setup Redis
 - Set server timezone to UTC
