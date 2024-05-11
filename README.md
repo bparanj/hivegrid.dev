@@ -422,7 +422,14 @@ Caddy is configured as the reverse proxy to Puma process.
 
 [![AWS Account Setup](https://img.youtube.com/vi/qSq6f6fZ_bs/0.jpg)](https://www.youtube.com/watch?v=qSq6f6fZ_bs)
 
-More videos to walk you through each step is coming soon.
+- [Create AWS admin IAM user](https://youtu.be/rLuj3EWRV_4)
+- [Create AWS dev IAM user](https://youtu.be/HaIVVql4e8Q)
+- [Packer Build Image](https://youtu.be/oIalLv92sqg)
+- [Packer Build Image - Part 2](https://youtu.be/me4fX_IhAvw)
+- [Packer Public Image](https://youtu.be/uhQse0jWIP8)
+- [Terraform Provision](https://youtu.be/lEcJD2DWyMk)
+- [Terraform Provision Instance](https://youtu.be/F3R9e4R3I8s)
+- [Using Capistrano to Deploy Rails App](https://youtu.be/2bZhikHKTbw)
 
 ## License
 
