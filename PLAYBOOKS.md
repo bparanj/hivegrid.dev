@@ -18,6 +18,8 @@ In fail2ban/files/jail.local, change the destemail:
 <Email for sending ban notifications>
 destemail = your-email@your-domain.com
 
+Fail2Ban protects your SSH server by monitoring login attempts and blocking IP addresses after too many failed attempts, which is a common sign of brute-force attacks. After installing it, configure it to watch SSH logs and ban suspicious IPs. It adds an extra layer of security to your SSH server.
+
 ## Harden SSH
 
 - Harden SSH Configuration for Base Image

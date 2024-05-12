@@ -213,7 +213,7 @@ See [main.tf](./terraform/main.tf) for more details. You can change it in [varia
 Packer uses Ansible as the provisioner. The Ansible playbooks are included in the master playbook. Packer runs the master playbook to create a custom AMI from a base Ubuntu 22.04 image. The playbooks:
 
 - Install required packages on Ubuntu 22.04
-- Install and configure Fail2ban
+- Implement Intrusion Detection
 - Setup deploy user
 - Harden SSH Configuration
 - Install and Configure Caddy Server
