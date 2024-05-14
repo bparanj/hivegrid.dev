@@ -145,6 +145,8 @@ graph LR
     * Installed software packages
     * System configurations
 
+Large EC2 instance is used to reduce the time taken to create the image. 
+
 ## Rails Stack
 
 The custom AMI created by Packer provides:
@@ -238,6 +240,14 @@ ansible-playbook update_fail2ban_email.yml -e "destemail=your-email@your-domain.
 
 See update_fail2ban_email.md in iac/ansible folder. [PENDING]
 
+Parallel processing is enabled in Ansible for speedup. See packer/ansible.cfg for the configuration of Ansible.
+
+### Directory Structure
+
+The ansible folder has directories for deploy and maintain. The playbooks at the ansible folder level are used for creating a custom image. Playbooks that are run for deploying Rails app are inside the deploy folder. The maintain folder is for database backup, CRON job setup or anything that is done as part of maintaining the production server.
+
+You need to provide your IP and PEM file location in ansible/inventory.ini file to use the playbooks inside deploy or maintain folders.
+
 ## Testing
 
 The image is tested using Goss. The tests folder contains the tests. Test results are exposed as a JSON endpoint. It can be accessed only within the EC2 instance. SSH into your EC2 instance and run:
@@ -297,6 +307,7 @@ SSH Access:
 The PEM file used for SSH access to your EC2 instance, is stored in AWS Secrets Manager. This means you can retrieve the PEM file even if you lose the original downloaded copy. You will be charged for storing the PEM file in Secrets Manager. To avoid the cost, you can delete the PEM file from the AWS console after downloading it.
 
 Database Backups:
+
 AWS S3 is used for storing database backups.
 
 ### Clone the Project
