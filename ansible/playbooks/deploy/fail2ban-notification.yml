@@ -1,0 +1,12 @@
+---
+- name: Update Fail2Ban Notification Email
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update the email address for sending ban notifications
+      ansible.builtin.lineinfile:
+        path: /etc/fail2ban/jail.local
+        regexp: '^destemail ='
+        line: "destemail = {{ destemail }}"
+        state: present

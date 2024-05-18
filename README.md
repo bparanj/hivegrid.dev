@@ -201,7 +201,7 @@ graph LR
 
 This diagram illustrates the workflow where the custom image, created through the Packer and Ansible, is consumed by Terraform to provision an EC2 instance. Terraform allows you to define the desired state of your infrastructure using declarative configuration files, and it automatically provisions and manages the EC2 instance based on that configuration.
 
-By using a custom image for the EC2 instance, we ensure that the instance is pre-configured with the required software and settings, reducing manual setup and configuration after the instance is launched.
+By using a custom image for the EC2 instance, the instance is pre-configured with the required software and settings, minimizing manual setup and configuration after the instance is launched.
 
 The Terraform template defines the following configuration:
 
@@ -232,13 +232,15 @@ You can:
 - Modify existing playbook included in the master playbook.
 - Remove existing playbook from the master playbook.
 
-Update the email for fail2ban notification emails:
+From the ansible folder, run the playbook to update the notification email for fail2ban:
 
 ```bash
-ansible-playbook update_fail2ban_email.yml -e "destemail=your-email@your-domain.com"
+ansible-playbook playbooks/deploy/fail2ban-notification.yml -e "destemail=your-email@your-domain.com"
 ```
 
-See update_fail2ban_email.md in iac/ansible folder. [PENDING]
+Replace the place holder `your-email@your-domain.com` with your email address. This playbook can be found here: ansible/playbooks/deploy/fail2ban-notification.yml
+
+### Parallel Processing
 
 Parallel processing is enabled in Ansible for speedup. See packer/ansible.cfg for the configuration of Ansible.
 
