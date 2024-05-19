@@ -399,6 +399,8 @@ graph LR
 
 The EC2 instance, provisioned using Terraform with a custom image, serves as the target environment for the deployed application. Capistrano is used minimally,  mainly because the DSL has a learning curve. If a task can be done in Ansible, it is preferred over Capistrano.
 
+For more details, refer the [sample Rails app](https://github.com/bparanj/capt) with working Capistrano setup.
+
 ## Process at a High Level
 
 ```mermaid
