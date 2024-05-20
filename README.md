@@ -232,6 +232,10 @@ You can:
 - Modify existing playbook included in the master playbook.
 - Remove existing playbook from the master playbook.
 
+Ansible Galaxy is only used for database backups. This means we can install the latest version sooner than it takes for the external dependency to update to newer versions.
+
+### Intrusion Detection
+
 From the ansible folder, run the playbook to update the notification email for fail2ban:
 
 ```bash
